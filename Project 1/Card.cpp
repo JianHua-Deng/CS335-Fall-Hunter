@@ -10,20 +10,19 @@ Card::Card(){
 //Copy Constructor
 Card::Card(const Card& rhs){
     if(this != &rhs){
+        /*
         this->cardType_ = rhs.getType();
         this->instruction_ = rhs.getInstruction();
         this->bitmap_ = rhs.getImageData();
         this->drawn_ = this->getDrawn();
+        */
     }
 }
 
 //Copy Assignment Operators
 Card& Card::operator=(const Card& rhs){
     if(this != &rhs){
-        this->setType(rhs.getType());
-        this->setInstruction(rhs.getInstruction());
-        this->setImageData(rhs.getImageData());
-        this->setDrawn(rhs.getDrawn());        
+  
     }
 
     return *this;
@@ -70,7 +69,7 @@ const std::string& Card::getInstruction() const{
 
 //Setter for Instruction
 void Card::setInstruction(const std::string& instruction){
-
+    this->instruction_ = instruction;
 }
 
 //Accessor for bitmap

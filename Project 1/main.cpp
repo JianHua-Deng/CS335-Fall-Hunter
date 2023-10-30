@@ -9,5 +9,7 @@ int main(){
 
     Card *c1 = new Card();
     std::cout << c1->getInstruction() << "\n";
+    c1->setInstruction("Im gay");
+    std::cout << c1->getInstruction() << "\n";
     return 0;
 }
