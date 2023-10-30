@@ -38,10 +38,7 @@ Card::Card(Card&& rhs){
 Card& Card::operator=(Card&& rhs){
 
     if(this != &rhs){
-        this->setType(rhs.getType());
-        this->setInstruction(rhs.getInstruction());
-        this->setImageData(rhs.getImageData());
-        this->setDrawn(rhs.getDrawn());
+        
     }
 
     return *this;
@@ -78,7 +75,7 @@ void Card::setInstruction(const std::string& instruction){
 
 //Accessor for bitmap
 const int* Card::getImageData() const{
-    return bitmap_;
+    return this->bitmap_;
 }
 
 //Setter for bitmap
