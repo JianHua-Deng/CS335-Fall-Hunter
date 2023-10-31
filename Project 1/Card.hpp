@@ -98,8 +98,8 @@ class Card
         void setDrawn(const bool& drawn);
 
         // Pure Virtual Functions
-        //virtual void Print() const = 0;
-        //virtual bool isPlayable() = 0;
+        virtual void Print() const = 0;
+        virtual bool isPlayable() = 0;
 
     private:
         CardType cardType_;

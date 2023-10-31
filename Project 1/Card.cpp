@@ -3,19 +3,23 @@
 //Default Constructor
 Card::Card(){
     this->setInstruction("");
-    this->setImageData(nullptr);
+    this->bitmap_ = new int[80];
     this->setDrawn(false);
 }
 
 //Copy Constructor
 Card::Card(const Card& rhs){
     if(this != &rhs){
-        /*
-        this->cardType_ = rhs.getType();
-        this->instruction_ = rhs.getInstruction();
-        this->bitmap_ = rhs.getImageData();
-        this->drawn_ = this->getDrawn();
-        */
+
+        //Condition statements for setting types
+        if(rhs.getType() == "ACTION_CARD"){
+            this->setType(ACTION_CARD);
+        }else{
+            this->setType(POINT_CARD);
+        }
+        this->setInstruction(rhs.getInstruction());
+        //this->setImageData();
+        this->setDrawn(rhs.getDrawn());        
     }
 }
 
@@ -30,7 +34,14 @@ Card& Card::operator=(const Card& rhs){
 
 //Move Constructor
 Card::Card(Card&& rhs){
-
+    if(rhs.getType() == "ACTION_CARD"){
+        this->setType(ACTION_CARD);
+    }else{
+        this->setType(POINT_CARD);
+    }
+    this->setInstruction(rhs.getInstruction());
+    //this->setImageData();
+    this->setDrawn(rhs.getDrawn());
 }
 
 //Move Assignment Operator
@@ -50,10 +61,8 @@ Card::~Card(){}
 std::string Card::getType() const{
     if(this->cardType_ == ACTION_CARD){
         return "ACTION_CARD";
-    }else if(this->cardType_ == POINT_CARD){
-        return "POINT_CARD";
     }else{
-        return "NONE";
+        return "POINT_CARD";
     }
 }
 
@@ -91,7 +100,6 @@ bool Card::getDrawn() const{
 void Card::setDrawn(const bool& drawn){
     this->drawn_ = drawn;
 }
-
 
 
 
