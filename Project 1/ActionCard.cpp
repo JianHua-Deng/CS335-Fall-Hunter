@@ -50,6 +50,6 @@ virtual bool ActionCard::isPlayable() override{
  * 
  * Note: For [ImageData]: If there is no image data, print "No image data" instead
  */
-//virtual void ActionCard::Print() const override{
+virtual void ActionCard::Print() const override{
 
-//}
+}
