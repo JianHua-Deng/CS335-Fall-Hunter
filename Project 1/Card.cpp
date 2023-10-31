@@ -55,7 +55,9 @@ Card& Card::operator=(Card&& rhs){
 }
 
 //Deconstructor
-Card::~Card(){}
+Card::~Card(){
+    delete[] this->bitmap_;
+}
 
 //Accessor for CardType
 std::string Card::getType() const{

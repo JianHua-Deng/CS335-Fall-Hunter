@@ -17,13 +17,16 @@ ActionCard::ActionCard(){
  * REVERSE HAND : reverse the order of the cards in the hand
  * SWAP HAND WITH OPPONENT : swap the hand with the opponent
 */
-bool ActionCard::isPlayable() override{
+bool ActionCard::isPlayable(){
 
     //check if drawn
     if(!(this->getDrawn())){
         return false;
+    }else{
+        return true;
     }
     
+    /*
     //Check if instruction were valid by splitting the word into a vector
     std::string instruction = this->getInstruction();
 
@@ -31,14 +34,14 @@ bool ActionCard::isPlayable() override{
     std::string word;
     std::stringstream stringstream(instruction);
 
-    while(std::getline(stringstream, word, " ")){
+    while(std::getline(stringstream, word, ' ')){
         word_list.push_back(word);
     }
 
     for(int i = 0; i < word_list.size(); i++){
         std::cout << word_list[i] << "\n";
     }
-
+    */
 }
 
 /**
@@ -50,6 +53,6 @@ bool ActionCard::isPlayable() override{
  * 
  * Note: For [ImageData]: If there is no image data, print "No image data" instead
  */
-void ActionCard::Print() const override{
+void ActionCard::Print() const{
 
 }
