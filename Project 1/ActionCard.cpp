@@ -17,7 +17,7 @@ ActionCard::ActionCard(){
  * REVERSE HAND : reverse the order of the cards in the hand
  * SWAP HAND WITH OPPONENT : swap the hand with the opponent
 */
-virtual bool ActionCard::isPlayable() override{
+bool ActionCard::isPlayable() override{
 
     //check if drawn
     if(!(this->getDrawn())){
@@ -50,6 +50,6 @@ virtual bool ActionCard::isPlayable() override{
  * 
  * Note: For [ImageData]: If there is no image data, print "No image data" instead
  */
-virtual void ActionCard::Print() const override{
+void ActionCard::Print() const override{
 
 }
