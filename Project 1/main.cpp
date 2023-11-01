@@ -20,6 +20,6 @@ int main(){
     ac1.Print();
     std::cout << ac1.isPlayable() << "\n";
     ac1.setInstruction("DRAW 10 CARD(S)");
-    std::cout << ac1.isPlayable() << "\n";
+    std::cout << "\n" <<ac1.isPlayable() << "\n";
     ac1.Print();
 }

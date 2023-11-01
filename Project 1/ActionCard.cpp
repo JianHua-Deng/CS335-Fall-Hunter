@@ -4,9 +4,7 @@
 /**
  * @post: Construct a new Action Card object
 */
-ActionCard::ActionCard(){
-
-}
+ActionCard::ActionCard():Card(){}
 
 /**
  * @return true if the card is playable, false otherwise
