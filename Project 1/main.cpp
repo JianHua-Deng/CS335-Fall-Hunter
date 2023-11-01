@@ -15,8 +15,5 @@ int main(){
     std::cout << c1->getInstruction() << ", "<< c1->getType() <<"\n";
     */
 
-   ActionCard ac1;
-   std::cout << ac1.getInstruction() << "\n";
-   ac1.setInstruction("IM GAY");
-   std::cout << ac1.getInstruction() << "\n";
+    ac1.Print();
 }
