@@ -15,5 +15,11 @@ int main(){
     std::cout << c1->getInstruction() << ", "<< c1->getType() <<"\n";
     */
 
+    ActionCard ac1;
+    ac1.setDrawn(true);
+    ac1.Print();
+    std::cout << ac1.isPlayable() << "\n";
+    ac1.setInstruction("DRAW 10 CARD(S)");
+    std::cout << ac1.isPlayable() << "\n";
     ac1.Print();
 }

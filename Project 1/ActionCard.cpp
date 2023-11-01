@@ -20,28 +20,38 @@ ActionCard::ActionCard(){
 bool ActionCard::isPlayable(){
 
     //check if drawn
+
+    
     if(!(this->getDrawn())){
         return false;
-    }else{
-        return true;
     }
     
-    /*
+    
     //Check if instruction were valid by splitting the word into a vector
     std::string instruction = this->getInstruction();
-
     std::vector<std::string> word_list;
+
     std::string word;
     std::stringstream stringstream(instruction);
 
+    //Seperating instruction with space, and pushing it to a vector
     while(std::getline(stringstream, word, ' ')){
         word_list.push_back(word);
     }
 
-    for(int i = 0; i < word_list.size(); i++){
-        std::cout << word_list[i] << "\n";
+    if(word_list.empty()){
+        return false;
+    }else if(word_list.size() == 3 && (word_list[0] == "DRAW" || word_list[0] == "PLAY")){
+        if(isInteger(word_list[1]) && word_list[2] == "CARD(S)"){
+            return true;
+        }
+    }else if(word_list.size() == 2 && word_list[0] == "REVERSE" && word_list[1] == "HAND"){
+        return true;
+    }else if(word_list.size() == 4 && word_list[0] == "SWAP" && word_list[1] == "HAND" && word_list[2] == "WITH" && word_list[3] == "OPPONENT"){
+        return true;
     }
-    */
+
+    return false;
 }
 
 /**
@@ -57,6 +67,19 @@ void ActionCard::Print() const{
 
     std::cout << "Type: " << "["<< this->getType() << "]"<< "\n";
     std::cout << "Instruction: " << "["<< this->getInstruction() << "]"<< "\n";
-    std::cout << "Card: " << "\n" << "["<< this->getImageData() << "]"<< "\n";
+    std::cout << "Card: " << "\n" << "[";
+    for(int i = 0; i < 80; i++){
+        std::cout << this->getImageData()[i];
+    }
+    std::cout << "]"<< "\n";
 
+}
+
+bool ActionCard::isInteger(std::string& integer){
+    for(char x : integer){
+        if(!std::isdigit(x)){
+            return false;
+        }
+    }
+    return true;
 }

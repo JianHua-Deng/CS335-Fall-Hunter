@@ -23,6 +23,9 @@ class ActionCard : public Card
         */
         ActionCard();
 
+        //Check if the string is a integer
+        bool isInteger(std::string& integer);
+
         /**
          * @return true if the card is playable, false otherwise
          * For a card to be playable, it has to be drawn and the instruction has to be valid
