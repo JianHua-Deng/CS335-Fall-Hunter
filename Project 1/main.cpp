@@ -50,6 +50,7 @@ int main(){
     deck1.AddCard(pc3);
     deck1.AddCard(pc2);
     std::cout << deck1.getSize() << "\n";
+    deck1.Draw();
 
 
 

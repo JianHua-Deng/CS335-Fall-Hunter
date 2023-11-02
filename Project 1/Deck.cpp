@@ -31,7 +31,7 @@ void Deck<CardType>::AddCard(const CardType& card){
  */
 template <typename CardType>
 CardType&& Deck<CardType>::Draw(){
-
+    return std::move(this->cards_.pop_back());
 }
 
 /**
@@ -63,7 +63,7 @@ void Deck<CardType>::Shuffle(){
  */
 template <typename CardType>
 int Deck<CardType>::getSize() const{
-    return this->getDeck().size();
+    return this->cards_.size();
 }
 
 /**
