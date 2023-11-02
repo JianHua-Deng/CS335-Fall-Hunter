@@ -74,7 +74,7 @@ Card::Card(Card&& rhs){
 //Move Assignment Operator
 Card& Card::operator=(Card&& rhs){
 
-    //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object
+    //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object, meaning we have to delete the exisiting data first
     delete[] this->bitmap_;
     this->bitmap_ = nullptr;
 

@@ -1,9 +1,9 @@
 #include "Card.hpp"
 #include "ActionCard.hpp"
-//#include "Deck.hpp"
 //#include "Hand.hpp"
 //#include "Player.hpp"
 #include "PointCard.hpp"
+#include "Deck.hpp"
 
 int main(){
 
@@ -42,5 +42,15 @@ int main(){
 
     std::cout << "----------------------------------" << "\n";
     pc2.Print();
+
+
+    std::cout << "----------------------------------" << "\n";
+    Deck<PointCard> deck1;
+    std::cout << deck1.getSize() << "\n";
+
+
+
+
+
     return 0;
 }
