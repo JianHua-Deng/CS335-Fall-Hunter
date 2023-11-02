@@ -64,7 +64,6 @@ Card::Card(Card&& rhs){
     this->bitmap_ = rhs.bitmap_;
     this->drawn_ = rhs.drawn_;
 
-    rhs.instruction_ = "";
     rhs.bitmap_ = nullptr;
     rhs.drawn_ = false;
 
@@ -88,7 +87,6 @@ Card& Card::operator=(Card&& rhs){
         this->bitmap_ = rhs.bitmap_;
         this->drawn_ = rhs.drawn_;  
 
-        rhs.instruction_ = "";
         rhs.bitmap_ = nullptr;
         rhs.drawn_ = false;
 

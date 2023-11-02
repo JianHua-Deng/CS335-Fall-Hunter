@@ -31,7 +31,9 @@ void Deck<CardType>::AddCard(const CardType& card){
  */
 template <typename CardType>
 CardType&& Deck<CardType>::Draw(){
-    return std::move(this->cards_.pop_back());
+    
+    //return std::move(this->cards_[this->getSize() - 1]);
+
 }
 
 /**
