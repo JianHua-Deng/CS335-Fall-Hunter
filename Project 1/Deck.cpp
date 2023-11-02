@@ -1,5 +1,4 @@
-#include "Deck.hpp"
-
+//#include "Deck.hpp"
 /**
  * @post: Construct a new Deck object
  */
@@ -13,7 +12,7 @@ Deck<CardType>::Deck(){
  */
 template <typename CardType>
 Deck<CardType>::~Deck(){
-
+    this->getDeck().clear();
 }
 
 /**
@@ -22,7 +21,7 @@ Deck<CardType>::~Deck(){
  */
 template <typename CardType>
 void Deck<CardType>::AddCard(const CardType& card){
-
+    this->cards_.push_back(card);
 }
 
 /**
