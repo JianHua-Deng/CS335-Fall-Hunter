@@ -4,7 +4,9 @@
 /**
  * @post: Construct a new Action Card object
 */
-ActionCard::ActionCard():Card(){}
+ActionCard::ActionCard():Card(){
+    this->setType(ACTION_CARD);
+}
 
 /**
  * @return true if the card is playable, false otherwise
@@ -18,12 +20,9 @@ ActionCard::ActionCard():Card(){}
 bool ActionCard::isPlayable(){
 
     //check if drawn
-
-    
     if(!(this->getDrawn())){
         return false;
     }
-    
     
     //Check if instruction were valid by splitting the word into a vector
     std::string instruction = this->getInstruction();
@@ -63,21 +62,18 @@ bool ActionCard::isPlayable(){
  */
 void ActionCard::Print() const{
 
+    std::string data;
+
     std::cout << "Type: " << "["<< this->getType() << "]"<< "\n";
     std::cout << "Instruction: " << "["<< this->getInstruction() << "]"<< "\n";
-    std::cout << "Card: " << "\n" << "[";
-    for(int i = 0; i < 80; i++){
-        std::cout << this->getImageData()[i];
-    }
-    std::cout << "]"<< "\n";
 
-}
-
-bool ActionCard::isInteger(std::string& integer){
-    for(char x : integer){
-        if(!std::isdigit(x)){
-            return false;
+    if(this->getImageData() == nullptr){
+        std::cout << "Card: " << "\n" << "[No image data]" << "\n";
+    }else{
+        for(int i = 0; i < 80; i++){
+            data += this->getImageData()[i];
         }
-    }
-    return true;
+        std::cout << "Card: " << "\n" << "[" << data << "]" << "\n";
+    }  
+
 }

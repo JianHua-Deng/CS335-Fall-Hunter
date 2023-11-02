@@ -9,7 +9,9 @@ Card::Card(){
 
 //Copy Constructor
 Card::Card(const Card& rhs){
-    if(this != &rhs){
+
+        //Creating this because. copy constructor is used to copy exisiting object to a newly created object, meaning the new instance never had a dynamic array of size 80
+        this->bitmap_ = new int[80];
 
         //Condition statements for setting types
         if(rhs.getType() == "ACTION_CARD"){
@@ -17,16 +19,34 @@ Card::Card(const Card& rhs){
         }else{
             this->setType(POINT_CARD);
         }
-        this->setInstruction(rhs.getInstruction());
-        //this->setImageData();
-        this->setDrawn(rhs.getDrawn());        
-    }
+        this->setInstruction(rhs.instruction_);
+        this->drawn_= rhs.drawn_;
+
+        if(rhs.bitmap_ != nullptr){
+            for(int i = 0; i < 80; i++){
+                this->bitmap_[i] = rhs.getImageData()[i];
+            }//end for loop
+        }//end if condition
+
 }
 
 //Copy Assignment Operators
 Card& Card::operator=(const Card& rhs){
     if(this != &rhs){
-  
+        //Condition statements for setting types
+        if(rhs.getType() == "ACTION_CARD"){
+            this->setType(ACTION_CARD);
+        }else{
+            this->setType(POINT_CARD);
+        }
+        this->setInstruction(rhs.instruction_);
+        this->drawn_= rhs.drawn_;
+
+        if(rhs.bitmap_ != nullptr){
+            for(int i = 0; i < 80; i++){
+                this->bitmap_[i] = rhs.getImageData()[i];
+            }//end for loop
+        }//end if condition
     }
 
     return *this;
@@ -34,21 +54,44 @@ Card& Card::operator=(const Card& rhs){
 
 //Move Constructor
 Card::Card(Card&& rhs){
+
     if(rhs.getType() == "ACTION_CARD"){
         this->setType(ACTION_CARD);
     }else{
         this->setType(POINT_CARD);
     }
-    this->setInstruction(rhs.getInstruction());
-    //this->setImageData();
-    this->setDrawn(rhs.getDrawn());
+    this->instruction_ = std::move(rhs.instruction_);
+    this->bitmap_ = rhs.bitmap_;
+    this->drawn_ = rhs.drawn_;
+
+    rhs.instruction_ = "";
+    rhs.bitmap_ = nullptr;
+    rhs.drawn_ = false;
+
+
 }
 
 //Move Assignment Operator
 Card& Card::operator=(Card&& rhs){
 
+    //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object
+    delete[] this->bitmap_;
+    this->bitmap_ = nullptr;
+
     if(this != &rhs){
-        
+        if(rhs.getType() == "ACTION_CARD"){
+            this->setType(ACTION_CARD);
+        }else{
+            this->setType(POINT_CARD);
+        }
+        this->instruction_ = std::move(rhs.instruction_);
+        this->bitmap_ = rhs.bitmap_;
+        this->drawn_ = rhs.drawn_;  
+
+        rhs.instruction_ = "";
+        rhs.bitmap_ = nullptr;
+        rhs.drawn_ = false;
+
     }
 
     return *this;
@@ -67,6 +110,11 @@ std::string Card::getType() const{
         return "POINT_CARD";
     }
 }
+
+/*
+copy constructor/assignment operator for loop for bitmap
+move assignmetn/operator, use std::move
+*/
 
 //Setting for CardType
 void Card::setType(const CardType& type){
@@ -103,5 +151,13 @@ void Card::setDrawn(const bool& drawn){
     this->drawn_ = drawn;
 }
 
+bool Card::isInteger(const std::string& integer){
+    for(char x : integer){
+        if(!std::isdigit(x)){
+            return false;
+        }
+    }
+    return true;
+}
 
 

@@ -97,6 +97,9 @@ class Card
          */
         void setDrawn(const bool& drawn);
 
+        //Check if the string is a integer
+        bool isInteger(const std::string& integer);
+
         // Pure Virtual Functions
         virtual void Print() const = 0;
         virtual bool isPlayable() = 0;
