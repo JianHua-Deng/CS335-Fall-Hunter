@@ -3,15 +3,12 @@
 //Default Constructor
 Card::Card(){
     this->setInstruction("");
-    this->bitmap_ = new int[80];
+    this->bitmap_ = nullptr;
     this->setDrawn(false);
 }
 
 //Copy Constructor
 Card::Card(const Card& rhs){
-
-        //Creating this because. copy constructor is used to copy exisiting object to a newly created object, meaning the new instance never had a dynamic array of size 80
-        this->bitmap_ = new int[80];
 
         //Condition statements for setting types
         if(rhs.getType() == "ACTION_CARD"){
@@ -23,10 +20,14 @@ Card::Card(const Card& rhs){
         this->drawn_= rhs.drawn_;
 
         if(rhs.bitmap_ != nullptr){
+        //Creating this because. copy constructor is used to copy exisiting object to a newly created object, meaning the new instance never had a dynamic array of size 80 since it was never initialized
+            this->bitmap_ = new int[80];            
             for(int i = 0; i < 80; i++){
-                this->bitmap_[i] = rhs.getImageData()[i];
+                this->bitmap_[i] = rhs.bitmap_[i];
             }//end for loop
-        }//end if condition
+        }else{
+            this->bitmap_ = rhs.bitmap_;
+        }
 
 }
 
@@ -43,10 +44,14 @@ Card& Card::operator=(const Card& rhs){
         this->drawn_= rhs.drawn_;
 
         if(rhs.bitmap_ != nullptr){
+        //Initializing bitmap_ to deal with the case when the current object had a nullptr as bitmap_
+            if(this->bitmap_ == nullptr){
+                this->bitmap_ = new int[80];
+            }
             for(int i = 0; i < 80; i++){
                 this->bitmap_[i] = rhs.bitmap_[i];
             }//end for loop
-        }//end if condition
+        }
     }
 
     return *this;
@@ -71,9 +76,6 @@ Card::Card(Card&& rhs){
 //Move Assignment Operator
 Card& Card::operator=(Card&& rhs){
 
-    //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object, meaning we have to delete the exisiting data first
-    
-
     if(this != &rhs){
         if(rhs.getType() == "ACTION_CARD"){
             this->setType(ACTION_CARD);
@@ -82,9 +84,11 @@ Card& Card::operator=(Card&& rhs){
         }
         this->instruction_ = rhs.instruction_;
         this->drawn_ = rhs.drawn_;
-        
+
+        //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object, meaning we have to delete the exisiting data first
         delete[] this->bitmap_;
         this->bitmap_ = rhs.bitmap_;
+
         rhs.bitmap_ = nullptr;
 
     }

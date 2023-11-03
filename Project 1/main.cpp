@@ -7,26 +7,20 @@
 
 int main(){
 
-    /*
-    Card *c1 = new Card();
-    std::cout << c1->getInstruction() << ", "<< c1->getType() <<"\n";
-    c1->setInstruction("Im gay");
-    c1->setType(ACTION_CARD);
-    std::cout << c1->getInstruction() << ", "<< c1->getType() <<"\n";
-    */
-
     ActionCard ac1;
     ac1.setDrawn(true);
     std::cout << ac1.isPlayable() << "\n";
     ac1.setInstruction("DRAW 10 CARD(S)");
     ac1.setType(ACTION_CARD);
+    ac1.setDrawn(true);
     std::cout << "\n" << ac1.isPlayable() << "\n";
     ac1.Print();
 
 
 
     std::cout << "AFTER MOVE" << "\n" << "ac2:" << "\n";
-    ActionCard ac2(std::move(ac1));
+    ActionCard ac2;
+    ac2 = std::move(ac1);
     ac2.Print();
     std::cout << "ac1" << "\n";
     ac1.Print();
@@ -64,7 +58,6 @@ int main(){
     deck1.AddCard(pc4);
     deck1.AddCard(pc5);
     deck1.AddCard(pc6);
-    //deck1.AddCard(pc2);
     std::cout << deck1.getSize() << "\n";
     PointCard pc7 = deck1.Draw();
     

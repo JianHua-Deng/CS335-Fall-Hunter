@@ -4,6 +4,7 @@
  * @post: Construct a new Point Card object
  */
 PointCard::PointCard():Card(){
+    
     this->setType(POINT_CARD);
 }
 /**
@@ -17,8 +18,9 @@ bool PointCard::isPlayable(){
 
     if(!(isInteger(this->getInstruction()))){
         return false;
+    }else{
+        return true;
     }
-    return true;
 }
 /**
  * @post: Print the Point Card in the following format:
