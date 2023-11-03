@@ -4,7 +4,7 @@
  */
 template <typename CardType>
 Deck<CardType>::Deck(){
-
+    this->cards_ = std::vector<CardType>();
 }
 
 /**
@@ -12,7 +12,7 @@ Deck<CardType>::Deck(){
  */
 template <typename CardType>
 Deck<CardType>::~Deck(){
-    this->getDeck().clear();
+    this->cards_.clear();
 }
 
 /**
@@ -32,7 +32,13 @@ void Deck<CardType>::AddCard(const CardType& card){
 template <typename CardType>
 CardType&& Deck<CardType>::Draw(){
     
-    //return std::move(this->cards_[this->getSize() - 1]);
+    if(!this->IsEmpty()){
+        CardType drawnCard = std::move(cards_.back());
+        this->cards_.pop_back();
+        return std::move(drawnCard);
+    }else{
+        throw DECK_EMPTY;
+    }
 
 }
 
@@ -41,10 +47,10 @@ CardType&& Deck<CardType>::Draw(){
  */
 template <typename CardType>
 bool Deck<CardType>::IsEmpty() const{
-    if(this->getSize() <= 0){
-        return true;
-    }else{
+    if(this->getSize() > 0){
         return false;
+    }else{
+        return true;
     }
 }
 

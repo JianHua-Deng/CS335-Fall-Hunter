@@ -54,18 +54,16 @@ Card& Card::operator=(const Card& rhs){
 
 //Move Constructor
 Card::Card(Card&& rhs){
-
+    
     if(rhs.getType() == "ACTION_CARD"){
         this->setType(ACTION_CARD);
     }else{
         this->setType(POINT_CARD);
     }
-    this->instruction_ = std::move(rhs.instruction_);
-    this->bitmap_ = rhs.bitmap_;
+    this->instruction_ = rhs.instruction_;
     this->drawn_ = rhs.drawn_;
-
+    this->bitmap_ = rhs.bitmap_;
     rhs.bitmap_ = nullptr;
-    rhs.drawn_ = false;
 
 
 }
@@ -83,12 +81,10 @@ Card& Card::operator=(Card&& rhs){
         }else{
             this->setType(POINT_CARD);
         }
-        this->instruction_ = std::move(rhs.instruction_);
+        this->instruction_ = rhs.instruction_;
+        this->drawn_ = rhs.drawn_;
         this->bitmap_ = rhs.bitmap_;
-        this->drawn_ = rhs.drawn_;  
-
         rhs.bitmap_ = nullptr;
-        rhs.drawn_ = false;
 
     }
 
