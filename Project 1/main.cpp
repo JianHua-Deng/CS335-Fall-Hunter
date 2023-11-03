@@ -60,6 +60,17 @@ int main(){
     deck1.AddCard(pc6);
     std::cout << deck1.getSize() << "\n";
     PointCard pc7 = deck1.Draw();
+    std::cout << "--------AFTER----DRAWN--------------------------" << "\n";
+    pc7.Print();
+
+    
+    std::cout << "printing hand vector:" << "\n" << "-----------------PreReverse--------------------\n";
+    for(int i = 0; i < deck1.getSize(); i++){
+        deck1.getDeck()[i].Print();
+        std::cout << "\n---------" << "\n";
+    }
+    std::cout << "after reverse" << "\n";
+    
     
 
 

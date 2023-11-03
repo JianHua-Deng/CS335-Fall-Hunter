@@ -2,21 +2,16 @@
 
 //Default Constructor
 Card::Card(){
-    this->setInstruction("");
+    this->instruction_ = "";
     this->bitmap_ = nullptr;
-    this->setDrawn(false);
+    this->drawn_ = false;
 }
 
 //Copy Constructor
 Card::Card(const Card& rhs){
 
-        //Condition statements for setting types
-        if(rhs.getType() == "ACTION_CARD"){
-            this->setType(ACTION_CARD);
-        }else{
-            this->setType(POINT_CARD);
-        }
-        this->setInstruction(rhs.instruction_);
+        this->cardType_ = rhs.cardType_;
+        this->instruction_ = rhs.instruction_;
         this->drawn_= rhs.drawn_;
 
         if(rhs.bitmap_ != nullptr){
@@ -35,11 +30,7 @@ Card::Card(const Card& rhs){
 Card& Card::operator=(const Card& rhs){
     if(this != &rhs){
         //Condition statements for setting types
-        if(rhs.getType() == "ACTION_CARD"){
-            this->setType(ACTION_CARD);
-        }else{
-            this->setType(POINT_CARD);
-        }
+        this->cardType_ = rhs.cardType_;
         this->instruction_ = rhs.instruction_;
         this->drawn_= rhs.drawn_;
 
@@ -60,14 +51,10 @@ Card& Card::operator=(const Card& rhs){
 //Move Constructor
 Card::Card(Card&& rhs){
     
-    if(rhs.getType() == "ACTION_CARD"){
-        this->setType(ACTION_CARD);
-    }else{
-        this->setType(POINT_CARD);
-    }
-    this->instruction_ = rhs.instruction_;
-    this->drawn_ = rhs.drawn_;
-    this->bitmap_ = rhs.bitmap_;
+    this->cardType_ = std::move(rhs.cardType_);
+    this->instruction_ = std::move(rhs.instruction_);
+    this->drawn_ = std::move(rhs.drawn_);
+    this->bitmap_ = std::move(rhs.bitmap_);
     rhs.bitmap_ = nullptr;
 
 
@@ -77,17 +64,13 @@ Card::Card(Card&& rhs){
 Card& Card::operator=(Card&& rhs){
 
     if(this != &rhs){
-        if(rhs.getType() == "ACTION_CARD"){
-            this->setType(ACTION_CARD);
-        }else{
-            this->setType(POINT_CARD);
-        }
-        this->instruction_ = rhs.instruction_;
-        this->drawn_ = rhs.drawn_;
+        this->cardType_ = std::move(rhs.cardType_);
+        this->instruction_ = std::move(rhs.instruction_);
+        this->drawn_ = std::move(rhs.drawn_);
 
         //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object, meaning we have to delete the exisiting data first
         delete[] this->bitmap_;
-        this->bitmap_ = rhs.bitmap_;
+        this->bitmap_ = std::move(rhs.bitmap_);
 
         rhs.bitmap_ = nullptr;
 

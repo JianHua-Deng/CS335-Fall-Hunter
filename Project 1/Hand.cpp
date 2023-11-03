@@ -80,7 +80,7 @@ bool Hand::isEmpty() const{
  * @post: Reverse the hand
  */
 void Hand::Reverse(){
-
+    std::reverse(this->cards_.begin(), this->cards_.end());
 }
 
 /**
