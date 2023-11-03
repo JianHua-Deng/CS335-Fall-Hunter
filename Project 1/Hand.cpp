@@ -18,7 +18,10 @@ Hand::~Hand(){
  * @param: other Hand object
  */
 Hand::Hand(const Hand& other){
-
+    this->cards_ = std::deque<PointCard>();
+    for(int i = 0; i < other.getCards().size(); i++){
+        this->cards_.push_back(other.getCards()[i]);
+    }
 }
 /**
  * Copy Assignment Operator
@@ -51,7 +54,7 @@ Hand& Hand::operator=(Hand&& other){
  * @return Hand
  */
 const std::deque<PointCard>& Hand::getCards() const{
-
+    return this->cards_;
 }
 
 /**

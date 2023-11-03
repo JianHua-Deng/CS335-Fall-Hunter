@@ -20,7 +20,7 @@ Card::Card(const Card& rhs){
         this->drawn_= rhs.drawn_;
 
         if(rhs.bitmap_ != nullptr){
-        //Creating this because. copy constructor is used to copy exisiting object to a newly created object, meaning the new instance never had a dynamic array of size 80 since it was never initialized
+        //Creating this because copy constructor is used to copy exisiting object to a newly created object, meaning the new instance never had a dynamic array of size 80 since it was never initialized
             this->bitmap_ = new int[80];            
             for(int i = 0; i < 80; i++){
                 this->bitmap_[i] = rhs.bitmap_[i];
@@ -99,6 +99,7 @@ Card& Card::operator=(Card&& rhs){
 //Deconstructor
 Card::~Card(){
     delete[] this->bitmap_;
+    bitmap_ = nullptr;
 }
 
 //Accessor for CardType

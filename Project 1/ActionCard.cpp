@@ -64,16 +64,16 @@ void ActionCard::Print() const{
 
     std::string data;
 
-    std::cout << "Type: " << "["<< this->getType() << "]"<< "\n";
-    std::cout << "Instruction: " << "["<< this->getInstruction() << "]"<< "\n";
+    std::cout << "Type: " << this->getType() << "\n";
+    std::cout << "Instruction: " << this->getInstruction() << "\n";
 
     if(this->getImageData() == nullptr){
-        std::cout << "Card: " << "\n" << "[No image data]" << "\n";
+        std::cout << "Card: " << "\n" << "No image data" << "\n";
     }else{
         for(int i = 0; i < 80; i++){
             data += this->getImageData()[i];
         }
-        std::cout << "Card: " << "\n" << "[" << data << "]" << "\n";
+        std::cout << "Card: " << "\n" << data << "\n";
     }  
 
 }
