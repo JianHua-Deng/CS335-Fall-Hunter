@@ -39,12 +39,12 @@ Card& Card::operator=(const Card& rhs){
         }else{
             this->setType(POINT_CARD);
         }
-        this->setInstruction(rhs.instruction_);
+        this->instruction_ = rhs.instruction_;
         this->drawn_= rhs.drawn_;
 
         if(rhs.bitmap_ != nullptr){
             for(int i = 0; i < 80; i++){
-                this->bitmap_[i] = rhs.getImageData()[i];
+                this->bitmap_[i] = rhs.bitmap_[i];
             }//end for loop
         }//end if condition
     }
@@ -72,8 +72,7 @@ Card::Card(Card&& rhs){
 Card& Card::operator=(Card&& rhs){
 
     //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object, meaning we have to delete the exisiting data first
-    delete[] this->bitmap_;
-    this->bitmap_ = nullptr;
+    
 
     if(this != &rhs){
         if(rhs.getType() == "ACTION_CARD"){
@@ -83,6 +82,8 @@ Card& Card::operator=(Card&& rhs){
         }
         this->instruction_ = rhs.instruction_;
         this->drawn_ = rhs.drawn_;
+        
+        delete[] this->bitmap_;
         this->bitmap_ = rhs.bitmap_;
         rhs.bitmap_ = nullptr;
 
