@@ -1,5 +1,5 @@
 #include "Hand.hpp"
-
+//std::swap(v[i], v[n-(-i)])
 // Big Five and constructor
 /**
  * @post: Construct a new Hand object
@@ -19,9 +19,7 @@ Hand::~Hand(){
  */
 Hand::Hand(const Hand& other){
     this->cards_ = std::deque<PointCard>();
-    for(int i = 0; i < other.getCards().size(); i++){
-        this->cards_.push_back(other.getCards()[i]);
-    }
+    std::copy(other.cards_.begin(), other.cards_.end(), this->cards_.begin());
 }
 /**
  * Copy Assignment Operator
@@ -29,7 +27,9 @@ Hand::Hand(const Hand& other){
  * @return this Hand 
  */
 Hand& Hand::operator=(const Hand& other){
-
+    if(this != &other){
+        std::copy(other.cards_.begin(), other.cards_.end(), this->cards_.begin());
+    }
 
     return *this;
 }
@@ -38,6 +38,7 @@ Hand& Hand::operator=(const Hand& other){
  * @param: other Hand object
  */
 Hand::Hand(Hand&& other){
+    this->cards_ = std::deque<PointCard>();
 
 }
 /**
@@ -46,7 +47,9 @@ Hand::Hand(Hand&& other){
  * @return this Hand
  */
 Hand& Hand::operator=(Hand&& other){
+    if(this != &other){
 
+    }
     return *this;
 }
 
@@ -62,7 +65,8 @@ const std::deque<PointCard>& Hand::getCards() const{
  * @param PointCard object
  */
 void Hand::addCard(PointCard&& card){
-    this->cards_.push_back(card);
+    card.setDrawn(true);
+    this->cards_.push_back(std::move(card));
 }
 
 /**

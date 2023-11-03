@@ -1,6 +1,6 @@
 #include "Card.hpp"
 #include "ActionCard.hpp"
-//#include "Hand.hpp"
+#include "Hand.hpp"
 //#include "Player.hpp"
 #include "PointCard.hpp"
 #include "Deck.hpp"
@@ -51,6 +51,7 @@ int main(){
     PointCard pc5;
     PointCard pc6;
     Deck<PointCard> deck1;
+    Deck<PointCard> deck2;
     std::cout << deck1.getSize() << "\n";
     pc4.setInstruction("11");
     pc5.setInstruction("95");
@@ -62,11 +63,15 @@ int main(){
     PointCard pc7 = deck1.Draw();
     std::cout << "--------AFTER----DRAWN--------------------------" << "\n";
     pc7.Print();
+    deck1.AddCard(pc7);
 
-    
+    Hand h1;
+    h1.addCard(deck1.Draw());
+    h1.addCard(deck1.Draw());
+    h1.addCard(deck1.Draw());
     std::cout << "printing hand vector:" << "\n" << "-----------------PreReverse--------------------\n";
-    for(int i = 0; i < deck1.getSize(); i++){
-        deck1.getDeck()[i].Print();
+    for(int i = 0; i < h1.getCards().size(); i++){
+        h1.getCards().at(i).Print();
         std::cout << "\n---------" << "\n";
     }
     std::cout << "after reverse" << "\n";
