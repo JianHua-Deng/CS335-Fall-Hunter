@@ -59,31 +59,35 @@ void Player::play(ActionCard&& card){
 
     std::cout<< "PLAYING ACTION CARD: " << ac1.getInstruction() << "\n";
 
-    if(ac1.isPlayable()){
-
     
-        //splitting the instruction into a vector
-        std::string instruction = ac1.getInstruction();
-        std::vector<std::string> word_list;
+    //splitting the instruction into a vector
+    std::string instruction = ac1.getInstruction();
+    std::vector<std::string> word_list;
 
-        std::string word;
-        std::stringstream stringstream(instruction);
+    std::string word;
+    std::stringstream stringstream(instruction);
 
-        //Seperating instruction with space, and pushing it to a vector
-        while(std::getline(stringstream, word, ' ')){
-            word_list.push_back(word);
+    //Seperating instruction with space, and pushing it to a vector
+    while(std::getline(stringstream, word, ' ')){
+        word_list.push_back(word);
+    }
+
+    //Checking the different instruction of ActionCard
+    if(word_list[0] == "PLAY"){
+        for(int i = 0; i < std::stoi(word_list[1]); i++){
+            this->playPointCard();
         }
+    }else if(word_list[0] == "DRAW"){
+        for(int i = 0; i < std::stoi(word_list[1]); i++){
+            this->drawPointCard();
+        }            
+    }else if(word_list[0] == "REVERSE"){
+        this->hand_.Reverse();
 
-        //Checking the different instruction of ActionCard
-        if(word_list[0] == "PLAY"){
-            for(int i = 0; i < std::stoi(word_list[1]); i++){
-                this->playPointCard();
-            }
-        }else if(word_list[0] == "DRAW"){
-            for(int i = 0; i < std::stoi(word_list[1]); i++){
-                this->drawPointCard();
-            }            
-        }
+    }else if(word_list[0] == "SWAP"){
+        Hand tempHand = std::move(this->opponent_->hand_);
+        this->opponent_->setHand(this->hand_);
+        this->hand_ = std::move(tempHand);
     }
         
 

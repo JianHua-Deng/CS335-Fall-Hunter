@@ -96,6 +96,9 @@ int main(){
     */
     std::cout << "-----------------TESTING PLAYER--------------------\n" << "\n";
 
+    Hand hand1;
+    Hand oppHand;
+
     ActionCard action1;
     action1.setInstruction("PLAY 1 CARD(S)");
     ActionCard action2;
@@ -106,10 +109,13 @@ int main(){
     action_deck.AddCard(action2);
 
     Player play1;
+    Player play2;
+    play1.setHand(hand1);
+    play2.setHand(oppHand);
+    play1.setOpponent(&play2);
     play1.setPointDeck(&deck1);
     play1.setActionDeck(&action_deck);
     play1.play(play1.getActionDeck()->Draw());
-
 
     return 0;
 }
