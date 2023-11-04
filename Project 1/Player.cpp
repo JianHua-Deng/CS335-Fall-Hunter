@@ -3,6 +3,7 @@
  * @post: Construct a new Player object
  */
 Player::Player(){
+    this->hand_ = Hand();
     this->score_ = 0;
     this->opponent_ = nullptr;
     this->actiondeck_ = nullptr; 
@@ -15,8 +16,7 @@ Player::Player(){
  * @post: Destroy the Player object
  */
 Player::~Player(){
-    delete actiondeck_;
-    delete pointdeck_;
+
 }
 
 /**
@@ -55,41 +55,38 @@ void Player::setScore(const int& score){
  */
 void Player::play(ActionCard&& card){
 
-    ActionCard ac1 = std::move(card);
-
-    std::cout<< "PLAYING ACTION CARD: " << ac1.getInstruction() << "\n";
-
+    std::cout<< "PLAYING ACTION CARD: " << card.getInstruction() << "\n";
     
     //splitting the instruction into a vector
-    std::string instruction = ac1.getInstruction();
+    std::string instruction = card.getInstruction();
     std::vector<std::string> word_list;
 
     std::string word;
     std::stringstream stringstream(instruction);
 
-    //Seperating instruction with space, and pushing it to a vector
     while(std::getline(stringstream, word, ' ')){
         word_list.push_back(word);
     }
+    
+        //Checking the different instruction of ActionCard
+        if(word_list[0] == "PLAY"){
+            for(int i = 0; i < std::stoi(word_list[1]); i++){
+                this->playPointCard();
+            }
+        }else if(word_list[0] == "DRAW"){
+            for(int i = 0; i < std::stoi(word_list[1]); i++){
+                this->drawPointCard();
+            }            
+        }else if(word_list[0] == "REVERSE"){
+            this->hand_.Reverse();
 
-    //Checking the different instruction of ActionCard
-    if(word_list[0] == "PLAY"){
-        for(int i = 0; i < std::stoi(word_list[1]); i++){
-            this->playPointCard();
+        }else if(word_list[0] == "SWAP"){
+
+            Hand tempHand = this->opponent_->hand_;
+            this->opponent_->setHand(this->hand_);
+            this->hand_ = std::move(tempHand);
+
         }
-    }else if(word_list[0] == "DRAW"){
-        for(int i = 0; i < std::stoi(word_list[1]); i++){
-            this->drawPointCard();
-        }            
-    }else if(word_list[0] == "REVERSE"){
-        this->hand_.Reverse();
-
-    }else if(word_list[0] == "SWAP"){
-        Hand tempHand = std::move(this->opponent_->hand_);
-        this->opponent_->setHand(this->hand_);
-        this->hand_ = std::move(tempHand);
-    }
-        
 
 }
 

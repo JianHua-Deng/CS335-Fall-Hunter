@@ -10,7 +10,7 @@ int main(){
     ActionCard ac1;
     ac1.setDrawn(true);
     std::cout << ac1.isPlayable() << "\n";
-    ac1.setInstruction("DRAW 10 CARD(S)");
+    ac1.setInstruction("SWAP HAND WITH OPPONENT");
     ac1.setType(ACTION_CARD);
     ac1.setDrawn(true);
     std::cout << "\n" << ac1.isPlayable() << "\n";
@@ -61,6 +61,7 @@ int main(){
     deck1.AddCard(pc6);
     std::cout << deck1.getSize() << "\n";
     PointCard pc7 = deck1.Draw();
+    
     std::cout << "--------AFTER----DRAWN--------------------------" << "\n";
     pc7.Print();
     deck1.AddCard(pc7);
@@ -94,7 +95,7 @@ int main(){
 
     std::cout << "11: " << h2.PlayCard() << "\n";
     */
-    std::cout << "-----------------TESTING PLAYER--------------------\n" << "\n";
+    std::cout << "-----------------TESTING PLAYER--------------------\n";
 
     Hand hand1;
     Hand oppHand;
@@ -103,9 +104,16 @@ int main(){
     action1.setInstruction("PLAY 1 CARD(S)");
     ActionCard action2;
     action2.setInstruction("DRAW 2 CARD(S)");
+    ActionCard action3;
+    action3.setInstruction("SWAP HAND WITH OPPONENT");
+    ActionCard action4;
+    action4.setInstruction("REVERSE HAND REVERSE");
 
-    Deck<ActionCard> action_deck; 
+    Deck<ActionCard> action_deck;
+    action_deck.AddCard(action3); 
+    action_deck.AddCard(action4);
     action_deck.AddCard(action1);
+    //action_deck.AddCard(action3);
     action_deck.AddCard(action2);
 
     Player play1;
@@ -115,7 +123,10 @@ int main(){
     play1.setOpponent(&play2);
     play1.setPointDeck(&deck1);
     play1.setActionDeck(&action_deck);
-    play1.play(play1.getActionDeck()->Draw());
-
+    play1.play(play1.getActionDeck()->Draw());//draws action2
+    play1.play(play1.getActionDeck()->Draw());//draws action1
+    play1.play(play1.getActionDeck()->Draw());//draws action4
+    play1.play(play1.getActionDeck()->Draw());//draws action3
+    std::cout << "hi" << "\n";
     return 0;
 }

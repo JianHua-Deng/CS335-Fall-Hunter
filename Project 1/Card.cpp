@@ -82,7 +82,7 @@ Card& Card::operator=(Card&& rhs){
 //Deconstructor
 Card::~Card(){
     delete[] this->bitmap_;
-    bitmap_ = nullptr;
+
 }
 
 //Accessor for CardType
