@@ -9,6 +9,8 @@ Player.cpp implements the Player class.
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
+#include "vector"
+#include "string"
 #include "Hand.hpp" 
 #include "Deck.hpp"
 #include "ActionCard.hpp"

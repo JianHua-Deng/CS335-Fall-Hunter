@@ -1,7 +1,7 @@
 #include "Card.hpp"
 #include "ActionCard.hpp"
 #include "Hand.hpp"
-//#include "Player.hpp"
+#include "Player.hpp"
 #include "PointCard.hpp"
 #include "Deck.hpp"
 
@@ -65,6 +65,7 @@ int main(){
     pc7.Print();
     deck1.AddCard(pc7);
 
+    /*
     Hand h1;
     h1.addCard(deck1.Draw());
     h1.addCard(deck1.Draw());
@@ -92,6 +93,22 @@ int main(){
     }    
 
     std::cout << "11: " << h2.PlayCard() << "\n";
+    */
+    std::cout << "-----------------TESTING PLAYER--------------------\n" << "\n";
+
+    ActionCard action1;
+    action1.setInstruction("PLAY 1 CARD(S)");
+    ActionCard action2;
+    action2.setInstruction("DRAW 2 CARD(S)");
+
+    Deck<ActionCard> action_deck; 
+    action_deck.AddCard(action1);
+    action_deck.AddCard(action2);
+
+    Player play1;
+    play1.setPointDeck(&deck1);
+    play1.setActionDeck(&action_deck);
+    play1.play(play1.getActionDeck()->Draw());
 
 
     return 0;

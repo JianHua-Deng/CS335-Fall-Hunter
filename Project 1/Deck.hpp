@@ -8,7 +8,6 @@ Deck.hpp defines the Deck class.
 #ifndef DECK_HPP
 #define DECK_HPP
 
-#define DECK_EMPTY 1
 
 #include <vector>
 #include <iostream>

@@ -31,14 +31,11 @@ void Deck<CardType>::AddCard(const CardType& card){
  */
 template <typename CardType>
 CardType&& Deck<CardType>::Draw(){
-    
-    if(!(this->IsEmpty())){
-        CardType&& drawnCard = std::move(cards_.back());
-        this->cards_.pop_back();
-        return std::move(drawnCard);
-    }else{
-        throw DECK_EMPTY;
-    }
+
+    CardType&& drawnCard = std::move(cards_.back());
+    this->cards_.pop_back();
+    return std::move(drawnCard);
+
 
 }
 
