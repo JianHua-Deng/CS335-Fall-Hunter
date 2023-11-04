@@ -18,8 +18,7 @@ Hand::~Hand(){
  * @param: other Hand object
  */
 Hand::Hand(const Hand& other){
-    this->cards_ = std::deque<PointCard>();
-    std::copy(other.cards_.begin(), other.cards_.end(), this->cards_.begin());
+    this->cards_ = other.cards_;
 }
 /**
  * Copy Assignment Operator
@@ -28,7 +27,8 @@ Hand::Hand(const Hand& other){
  */
 Hand& Hand::operator=(const Hand& other){
     if(this != &other){
-        std::copy(other.cards_.begin(), other.cards_.end(), this->cards_.begin());
+        this->cards_ = other.cards_;
+        //std::copy(other.cards_.begin(), other.cards_.end(), this->cards_.begin());
     }
 
     return *this;
@@ -38,7 +38,7 @@ Hand& Hand::operator=(const Hand& other){
  * @param: other Hand object
  */
 Hand::Hand(Hand&& other){
-    this->cards_ = std::deque<PointCard>();
+    this->cards_ = std::move(other.cards_);
 
 }
 /**
@@ -48,8 +48,8 @@ Hand::Hand(Hand&& other){
  */
 Hand& Hand::operator=(Hand&& other){
     if(this != &other){
-
-    }
+        this->cards_ = std::move(other.cards_);
+    }  
     return *this;
 }
 
@@ -73,11 +73,7 @@ void Hand::addCard(PointCard&& card){
  * @return true if hand is empty, false otherwise
  */
 bool Hand::isEmpty() const{
-    if(this->cards_.size() > 0){
-        return false;
-    }else{
-        return true;
-    }
+    return this->cards_.empty();
 }
 
 /**

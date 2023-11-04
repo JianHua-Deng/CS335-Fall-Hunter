@@ -69,17 +69,29 @@ int main(){
     h1.addCard(deck1.Draw());
     h1.addCard(deck1.Draw());
     h1.addCard(deck1.Draw());
-    std::cout << "printing hand vector:" << "\n" << "-----------------PreReverse--------------------\n";
+
+    Hand h2 = std::move(h1);
+
+    std::cout << "printing h2 Hand:" << "\n" << "-----------------PreReverse AND Moved from h1--------------------\n";
+    for(int i = 0; i < h2.getCards().size(); i++){
+        h2.getCards().at(i).Print();
+        std::cout << "\n---------" << "\n";
+    }
+    std::cout << "-----------------h1 After being moved to h2--------------------\n" << "\n";
+    
     for(int i = 0; i < h1.getCards().size(); i++){
         h1.getCards().at(i).Print();
         std::cout << "\n---------" << "\n";
     }
-    std::cout << "after reverse" << "\n";
-    
-    
 
+    std::cout << "-----------------AfterReverse--------------------\n" << "\n";
+    h2.Reverse();
+    for(int i = 0; i < h2.getCards().size(); i++){
+        h2.getCards().at(i).Print();
+        std::cout << "\n---------" << "\n";
+    }    
 
-
+    std::cout << "11: " << h2.PlayCard() << "\n";
 
 
     return 0;
