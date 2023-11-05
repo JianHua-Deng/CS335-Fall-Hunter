@@ -11,7 +11,7 @@ Hand::Hand(){
  * @post: Destroy the Hand object
  */
 Hand::~Hand(){
-    this->cards_.clear();
+
 }
 /**
  * Copy Constructor
@@ -80,7 +80,14 @@ bool Hand::isEmpty() const{
  * @post: Reverse the hand
  */
 void Hand::Reverse(){
-    std::reverse(this->cards_.begin(), this->cards_.end());
+
+    std::deque<PointCard> reversedCards;
+    for(int i = this->cards_.size() - 1; i >= 0; i--){
+        reversedCards.push_back(this->cards_[i]);
+    }
+    this->cards_ = std::move(reversedCards);
+    
+
 }
 
 /**

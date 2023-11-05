@@ -13,7 +13,6 @@ Hand.cpp Defines the Hand class.
 #define UNPLAYABLE 2
 
 #include <deque>
-#include <algorithm>
 #include "PointCard.hpp"
 
 class Hand {

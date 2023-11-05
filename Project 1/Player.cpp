@@ -3,7 +3,7 @@
  * @post: Construct a new Player object
  */
 Player::Player(){
-    this->hand_ = Hand();
+
     this->score_ = 0;
     this->opponent_ = nullptr;
     this->actiondeck_ = nullptr; 
@@ -16,6 +16,7 @@ Player::Player(){
  * @post: Destroy the Player object
  */
 Player::~Player(){
+
 
 }
 
@@ -54,13 +55,12 @@ void Player::setScore(const int& score){
  * PLAYING ACTION CARD: [instruction]
  */
 void Player::play(ActionCard&& card){
-
-    std::cout<< "PLAYING ACTION CARD: " << card.getInstruction() << "\n";
     
-    //splitting the instruction into a vector
     std::string instruction = card.getInstruction();
-    std::vector<std::string> word_list;
+    std::cout << "PLAYING ACTION CARD:  \n" << instruction << "\n";
 
+    //splitting the instruction into a vector
+    std::vector<std::string> word_list;
     std::string word;
     std::stringstream stringstream(instruction);
 
@@ -81,26 +81,29 @@ void Player::play(ActionCard&& card){
             this->hand_.Reverse();
 
         }else if(word_list[0] == "SWAP"){
-
-            Hand tempHand = this->opponent_->hand_;
-            this->opponent_->setHand(this->hand_);
-            this->hand_ = std::move(tempHand);
-
+            if(this->opponent_ != nullptr){
+                std::swap(this->hand_, this->opponent_->hand_);
+            }
+            
         }
-
+    
 }
 
 /**
  * @post: Draw a point card and place it in the player's hand
  */
 void Player::drawPointCard(){
+
     this->hand_.addCard(this->pointdeck_->Draw());
+
 }
 /**
  * @post: Play a point card from the player's hand and update the player's score
  */
 void Player::playPointCard(){
-    this->score_ += this->hand_.PlayCard();
+    if(!(this->hand_.isEmpty())){
+        this->score_ += this->hand_.PlayCard();
+    }
 }
 
 /**
