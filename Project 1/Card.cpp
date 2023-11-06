@@ -68,8 +68,9 @@ Card& Card::operator=(Card&& rhs){
         this->instruction_ = std::move(rhs.instruction_);
         this->drawn_ = std::move(rhs.drawn_);
 
-        //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a newly allcoated object, meaning we have to delete the exisiting data first
+        //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a exisiting object, meaning we have to delete the exisiting data first
         delete[] this->bitmap_;
+        this->bitmap_ = new int[80];
         this->bitmap_ = std::move(rhs.bitmap_);
 
         rhs.bitmap_ = nullptr;

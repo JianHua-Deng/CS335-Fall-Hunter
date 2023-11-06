@@ -17,7 +17,6 @@ Player::Player(){
  */
 Player::~Player(){
 
-
 }
 
 /**
@@ -57,7 +56,7 @@ void Player::setScore(const int& score){
 void Player::play(ActionCard&& card){
     
     std::string instruction = card.getInstruction();
-    std::cout << "PLAYING ACTION CARD:  \n" << instruction << "\n";
+    std::cout << "PLAYING ACTION CARD: " << instruction << "\n";
 
     //splitting the instruction into a vector
     std::vector<std::string> word_list;
@@ -68,24 +67,24 @@ void Player::play(ActionCard&& card){
         word_list.push_back(word);
     }
     
-        //Checking the different instruction of ActionCard
-        if(word_list[0] == "PLAY"){
-            for(int i = 0; i < std::stoi(word_list[1]); i++){
-                this->playPointCard();
-            }
-        }else if(word_list[0] == "DRAW"){
-            for(int i = 0; i < std::stoi(word_list[1]); i++){
-                this->drawPointCard();
-            }            
-        }else if(word_list[0] == "REVERSE"){
-            this->hand_.Reverse();
-
-        }else if(word_list[0] == "SWAP"){
-            if(this->opponent_ != nullptr){
-                std::swap(this->hand_, this->opponent_->hand_);
-            }
-            
+    //Checking the different instruction of ActionCard
+    if(word_list[0] == "PLAY"){
+        for(int i = 0; i < std::stoi(word_list[1]); i++){
+            this->playPointCard();
         }
+    }else if(word_list[0] == "DRAW"){
+        for(int i = 0; i < std::stoi(word_list[1]); i++){
+            this->drawPointCard();
+        }            
+    }else if(word_list[0] == "REVERSE"){
+        this->hand_.Reverse();
+
+    }else if(word_list[0] == "SWAP"){
+        if(this->opponent_ != nullptr){
+            std::swap(this->hand_, this->opponent_->hand_);
+        }
+        
+    }
     
 }
 
@@ -93,8 +92,9 @@ void Player::play(ActionCard&& card){
  * @post: Draw a point card and place it in the player's hand
  */
 void Player::drawPointCard(){
-
-    this->hand_.addCard(this->pointdeck_->Draw());
+    if(this->pointdeck_ != nullptr){
+        this->hand_.addCard(this->pointdeck_->Draw());
+    }
 
 }
 /**

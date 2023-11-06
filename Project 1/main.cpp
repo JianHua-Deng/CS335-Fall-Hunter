@@ -104,7 +104,7 @@ int main(){
     ActionCard action1;
     action1.setInstruction("PLAY 1 CARD(S)");
     ActionCard action2;
-    action2.setInstruction("DRAW 2 CARD(S)");
+    action2.setInstruction("DRAW 3 CARD(S)");
     ActionCard action3;
     action3.setInstruction("SWAP HAND WITH OPPONENT");
     ActionCard action4;

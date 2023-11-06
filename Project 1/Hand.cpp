@@ -11,7 +11,7 @@ Hand::Hand(){
  * @post: Destroy the Hand object
  */
 Hand::~Hand(){
-
+    this->cards_.clear();
 }
 /**
  * Copy Constructor
@@ -81,12 +81,11 @@ bool Hand::isEmpty() const{
  */
 void Hand::Reverse(){
 
-    std::deque<PointCard> reversedCards;
-    for(int i = this->cards_.size() - 1; i >= 0; i--){
-        reversedCards.push_back(this->cards_[i]);
+    for(int i = 0; i < this->cards_.size() / 2; i++){
+        std::swap(this->cards_[i], this->cards_[this->cards_.size()-i-1]);
     }
-    this->cards_ = std::move(reversedCards);
     
+    //std::reverse(this->cards_.begin(), this->cards_.end());
 
 }
 
@@ -97,16 +96,17 @@ void Hand::Reverse(){
  * @return the points earned from playing the card
  */
 int Hand::PlayCard(){
-    if(this->cards_.empty()){
-        throw EMPTY;
+
+    if(this->isEmpty()){
+        throw "Hand are empty";
     }else if (!(this->cards_.front().isPlayable())){
         this->cards_.pop_front();
-        throw UNPLAYABLE;
-    }else{
-        std::string strPoint = this->cards_.front().getInstruction();
-        int point = std::stoi(strPoint);
-        
-        this->cards_.pop_front();
-        return point;
+        throw "Card contains unplayable instructions";
     }
+
+    int point = std::stoi(this->cards_.front().getInstruction());
+    this->cards_.pop_front();
+    return point;
+
+
 }

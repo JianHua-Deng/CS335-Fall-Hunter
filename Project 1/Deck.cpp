@@ -12,7 +12,7 @@ Deck<CardType>::Deck(){
  */
 template <typename CardType>
 Deck<CardType>::~Deck(){
-
+    this->cards_.clear();
 }
 
 /**
@@ -32,10 +32,10 @@ void Deck<CardType>::AddCard(const CardType& card){
 template <typename CardType>
 CardType&& Deck<CardType>::Draw(){
 
- 
     CardType&& drawnCard = std::move(cards_.back());
     this->cards_.pop_back();
     return std::move(drawnCard);
+
 
     /*
     CardType drawnCard = cards_.back();
