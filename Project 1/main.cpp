@@ -130,31 +130,14 @@ int main(){
     play5->setPointDeck(empPD);
     play5->setOpponent(play4);
 
-    Deck<ActionCard>* acdeck = new Deck<ActionCard>;
-    Deck<PointCard>* ptdeck = new Deck<PointCard>;
-    Hand handtest;
-
     //handtest.PlayCard();
-    
-    Player* play1 = new Player();
-    Player* play2 = new Player();
-    play1->setOpponent(play2);
-    play1->setPointDeck(ptdeck);
-    play1->setActionDeck(acdeck);
-    //play1->play(std::move(action2));//draws action2
-    play1->play(std::move(action1));//draws action1
-    play1->play(std::move(action4));//draws action4
-    play1->play(std::move(action3));//draws action3
-    std::cout << "hi" << "\n";
-    //std::cout << play1->getHand().isEmpty() << "\n";
-    //std::cout << play2->getHand().isEmpty() << "\n";
+
     
 
     //Player* play4;
     //delete play4;
     //*/
-    delete play1;
-    delete play2;
+
     delete play4;
     delete play5;
     return 0;

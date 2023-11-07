@@ -17,24 +17,23 @@ Player::Player(){
  * @post: Destroy the Player object
  */
 Player::~Player(){
-
-if (opponent_ != nullptr && opponent_->getActionDeck() == actiondeck_){
-        opponent_->setActionDeck(nullptr);
+    //conditions for when the opponent and current player has the same pointdeck, avoiding opponent to delete something that no longer exists, causing seg fault
+    if(this->opponent_ != nullptr && this->getActionDeck() == this->opponent_->getActionDeck()){
+        this->opponent_->setActionDeck(nullptr);
     }
-    delete actiondeck_;
-    actiondeck_ = nullptr;
+    delete this->actiondeck_;
 
-    if (opponent_ != nullptr && opponent_->getPointDeck() == pointdeck_){
-        opponent_->setPointDeck(nullptr);
+    //conditions for when the opponent and current player has the same pointdeck, avoiding opponent to delete something that no longer exists, causing seg fault
+    if(this->opponent_ != nullptr && this->getPointDeck() == this->opponent_ ->getPointDeck()){
+        this->opponent_->setPointDeck(nullptr);
     }
-    delete pointdeck_;
-    pointdeck_ = nullptr;
+    delete this->pointdeck_;
 
-    if (opponent_ != nullptr){
-        opponent_->setOpponent(nullptr);
+    //Avoid deleting opponent to avoid double free as opponent will call destructor on itself
+    if(this->opponent_ != nullptr){
+        this->setOpponent(nullptr);
     }
-    opponent_ = nullptr;
-
+    this->opponent_ = nullptr;
 }
 
 /**
