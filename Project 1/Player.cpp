@@ -5,6 +5,7 @@
 Player::Player(){
 
     this->score_ = 0;
+    this->hand_ = Hand();
     this->opponent_ = nullptr;
     this->actiondeck_ = nullptr; 
     this->pointdeck_ = nullptr;
@@ -16,6 +17,23 @@ Player::Player(){
  * @post: Destroy the Player object
  */
 Player::~Player(){
+
+if (opponent_ != nullptr && opponent_->getActionDeck() == actiondeck_){
+        opponent_->setActionDeck(nullptr);
+    }
+    delete actiondeck_;
+    actiondeck_ = nullptr;
+
+    if (opponent_ != nullptr && opponent_->getPointDeck() == pointdeck_){
+        opponent_->setPointDeck(nullptr);
+    }
+    delete pointdeck_;
+    pointdeck_ = nullptr;
+
+    if (opponent_ != nullptr){
+        opponent_->setOpponent(nullptr);
+    }
+    opponent_ = nullptr;
 
 }
 
@@ -53,8 +71,9 @@ void Player::setScore(const int& score){
  * Begin the function by reporting the instruction of the card:
  * PLAYING ACTION CARD: [instruction]
  */
+/**/
 void Player::play(ActionCard&& card){
-    
+
     std::string instruction = card.getInstruction();
     std::cout << "PLAYING ACTION CARD: " << instruction << "\n";
 
@@ -125,6 +144,7 @@ Player* Player::getOpponent(){
  * @param: A pointer to a deck holding Action cards 
  */
 void Player::setActionDeck(Deck<ActionCard>* actiondeck){
+    //delete this->actiondeck_;
     this->actiondeck_ = actiondeck;
 }
 /**
@@ -139,6 +159,7 @@ Deck<ActionCard>* Player::getActionDeck(){
  * @param: A pointer to a deck holding Point cards
  */
 void Player::setPointDeck(Deck<PointCard>* pointdeck){
+    //delete this->pointdeck_;
     this->pointdeck_ = pointdeck;
 }
 /**

@@ -12,15 +12,7 @@ PointCard::PointCard():Card(){
  * For a card to be playable, it has to be drawn and the instruction has to be a valid number
 */
 bool PointCard::isPlayable(){
-    if(!this->getDrawn()){
-        return false;
-    }
-
-    if(!(isInteger(this->getInstruction()))){
-        return false;
-    }else{
-        return true;
-    }
+    return getDrawn() && std::stoi(getInstruction()) > 0;
 }
 /**
  * @post: Print the Point Card in the following format:
@@ -33,18 +25,17 @@ bool PointCard::isPlayable(){
  */
 void PointCard::Print() const{
 
-    std::string data;
-
     std::cout << "Type: " << this->getType() << "\n";
     std::cout << "Points: " << this->getInstruction() << "\n";
 
     if(this->getImageData() == nullptr){
-        std::cout << "Card: " << "\n" << "No image data" << "\n";
+        std::cout << "Card: " << std::endl << "No image data" << std::endl;
     }else{
-        for(int i = 0; i < 80; i++){
-            data += this->getImageData()[i];
+        std::cout << "Card: "<< std::endl << "[" << this->getImageData()[0];
+        for(int i = 1; i < 80; i++){
+            std::cout << ", " << this->getImageData()[i];
         }
-        std::cout << "Card: " << "\n"  << data  << "\n";
+        std::cout << "]" << std::endl;
     }  
 
 }

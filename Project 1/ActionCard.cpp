@@ -38,13 +38,13 @@ bool ActionCard::isPlayable(){
 
     if(word_list.empty()){
         return false;
-    }else if(word_list.size() == 3 && (word_list[0] == "DRAW" || word_list[0] == "PLAY")){
-        if(isInteger(word_list[1]) && word_list[2] == "CARD(S)"){
+    }else if((word_list[0] == "DRAW" || word_list[0] == "PLAY")){
+        if(word_list[2] == "CARD(S)"){
             return true;
         }
-    }else if(word_list.size() == 2 && word_list[0] == "REVERSE" && word_list[1] == "HAND"){
+    }else if(word_list[0] == "REVERSE" && word_list[1] == "HAND"){
         return true;
-    }else if(word_list.size() == 4 && word_list[0] == "SWAP" && word_list[1] == "HAND" && word_list[2] == "WITH" && word_list[3] == "OPPONENT"){
+    }else if(word_list[0] == "SWAP" && word_list[1] == "HAND" && word_list[2] == "WITH" && word_list[3] == "OPPONENT"){
         return true;
     }
 
@@ -68,12 +68,13 @@ void ActionCard::Print() const{
     std::cout << "Instruction: " << this->getInstruction() << "\n";
 
     if(this->getImageData() == nullptr){
-        std::cout << "Card: " << "\n" << "No image data" << "\n";
+        std::cout << "Card: " << std::endl << "No image data" << std::endl;
     }else{
-        for(int i = 0; i < 80; i++){
-            data += this->getImageData()[i];
+        std::cout << "Card: \n" << "[" << this->getImageData()[0];
+        for(int i = 1; i < 80; i++){
+            std::cout << ", " << this->getImageData()[i];
         }
-        std::cout << "Card: " << "\n" << data << "\n";
+        std::cout << "]" << std::endl;
     }  
 
 }

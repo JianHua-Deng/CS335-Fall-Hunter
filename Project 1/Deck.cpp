@@ -35,6 +35,7 @@ CardType&& Deck<CardType>::Draw(){
     CardType&& drawnCard = std::move(cards_.back());
     this->cards_.pop_back();
     return std::move(drawnCard);
+    
 
 
     /*

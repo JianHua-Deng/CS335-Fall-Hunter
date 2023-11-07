@@ -51,10 +51,10 @@ Card& Card::operator=(const Card& rhs){
 //Move Constructor
 Card::Card(Card&& rhs){
     
-    this->cardType_ = std::move(rhs.cardType_);
-    this->instruction_ = std::move(rhs.instruction_);
-    this->drawn_ = std::move(rhs.drawn_);
-    this->bitmap_ = std::move(rhs.bitmap_);
+    this->cardType_ = rhs.cardType_;
+    this->instruction_ = rhs.instruction_;
+    this->drawn_ = rhs.drawn_;
+    this->bitmap_ = rhs.bitmap_;
     rhs.bitmap_ = nullptr;
 
 
@@ -63,19 +63,10 @@ Card::Card(Card&& rhs){
 //Move Assignment Operator
 Card& Card::operator=(Card&& rhs){
 
-    if(this != &rhs){
-        this->cardType_ = std::move(rhs.cardType_);
-        this->instruction_ = std::move(rhs.instruction_);
-        this->drawn_ = std::move(rhs.drawn_);
-
-        //We needed this in move assignment operator but not in move constructor because this is used when we moving data to a exisiting object, meaning we have to delete the exisiting data first
-        delete[] this->bitmap_;
-        this->bitmap_ = new int[80];
-        this->bitmap_ = std::move(rhs.bitmap_);
-
-        rhs.bitmap_ = nullptr;
-
-    }
+    std::swap(this->cardType_, rhs.cardType_);
+    std::swap(this->instruction_, rhs.instruction_);
+    std::swap(this->bitmap_, rhs.bitmap_);
+    std::swap(this->drawn_, rhs.drawn_);
 
     return *this;
 }
@@ -122,6 +113,7 @@ const int* Card::getImageData() const{
 
 //Setter for bitmap
 void Card::setImageData(int* data){
+    delete[] this->bitmap_;
     this->bitmap_ = data;
 }
 
@@ -135,13 +127,5 @@ void Card::setDrawn(const bool& drawn){
     this->drawn_ = drawn;
 }
 
-bool Card::isInteger(const std::string& integer){
-    for(char x : integer){
-        if(!std::isdigit(x)){
-            return false;
-        }
-    }
-    return true;
-}
 
 
