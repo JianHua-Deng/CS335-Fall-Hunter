@@ -1,5 +1,11 @@
 #include "Hand.hpp"
-//std::swap(v[i], v[n-(-i)])
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name: Jianhua Deng
+Date: 11/07/2023 
+Hand.cpp implement the Hand class.
+*/
 // Big Five and constructor
 /**
  * @post: Construct a new Hand object

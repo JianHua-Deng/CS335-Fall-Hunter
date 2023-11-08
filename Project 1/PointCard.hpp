@@ -1,8 +1,8 @@
 /*
 CSCI335 Fall 2023
 Assignment 1 – Card Game
-Name
-Date
+Name: Jianhua Deng
+Date: 11/07/2023 
 PointCard.hpp defines the PointCard class and inherits from the Card Class.
 */
 #ifndef POINTCARD_HPP

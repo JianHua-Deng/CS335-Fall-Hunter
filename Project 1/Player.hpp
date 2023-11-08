@@ -1,9 +1,9 @@
 /*
 CSCI335 Fall 2023
 Assignment 1 – Card Game
-Name
-Date
-Player.cpp implements the Player class.
+Name: Jianhua Deng
+Date: 11/07/2023 
+Player.hpp define the Player class.
 */
 
 #ifndef PLAYER_HPP

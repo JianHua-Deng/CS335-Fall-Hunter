@@ -1,9 +1,9 @@
 /*
 CSCI335 Fall 2023
 Assignment 1 – Card Game
-Name
-Date
-Hand.cpp Defines the Hand class.
+Name: Jianhua Deng
+Date: 11/07/2023 
+Hand.hpp Defines the Hand class.
 */
 
 #ifndef HAND_HPP

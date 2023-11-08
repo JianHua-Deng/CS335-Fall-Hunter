@@ -1,8 +1,8 @@
 /*
 CSCI335 Fall 2023
 Assignment 1 – Card Game
-Name
-Date
+Name: Jianhua Deng
+Date: 11/07/2023 
 ActionCard.hpp defines the ActionCard class and inherits from the Card Class.
 */
 #ifndef ACTIONCARD_HPP

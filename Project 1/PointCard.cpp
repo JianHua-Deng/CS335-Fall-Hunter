@@ -1,5 +1,12 @@
 #include "Card.hpp"
 #include "PointCard.hpp"
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name: Jianhua Deng
+Date: 11/07/2023 
+PointCard.cpp implement the PointCard class and inherits from the Card Class.
+*/
 /**
  * @post: Construct a new Point Card object
  */

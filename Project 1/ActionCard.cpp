@@ -1,6 +1,12 @@
 #include "Card.hpp"
 #include "ActionCard.hpp"
-
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name: Jianhua Deng
+Date: 11/07/2023 
+ActionCard.cpp implement the ActionCard class and inherits from the Card Class.
+*/
 /**
  * @post: Construct a new Action Card object
 */

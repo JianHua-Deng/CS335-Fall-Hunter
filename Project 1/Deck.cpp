@@ -1,4 +1,11 @@
 //#include "Deck.hpp"
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name: Jianhua Deng
+Date: 11/07/2023 
+Deck.cpp implement the Deck class.
+*/
 /**
  * @post: Construct a new Deck object
  */

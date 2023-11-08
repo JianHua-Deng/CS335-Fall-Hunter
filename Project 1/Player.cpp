@@ -1,4 +1,12 @@
 #include "Player.hpp"
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name: Jianhua Deng
+Date: 11/07/2023 
+Player.cpp implements the Player class.
+*/
+
 /**
  * @post: Construct a new Player object
  */

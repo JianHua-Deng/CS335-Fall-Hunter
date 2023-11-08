@@ -1,5 +1,11 @@
 #include "Card.hpp"
-
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name: Jianhua Deng
+Date: 11/07/2023 
+Card.cpp implement the Card class and its member functions.
+*/
 //Default Constructor
 Card::Card(){
     this->instruction_ = "";
