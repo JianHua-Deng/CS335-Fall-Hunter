@@ -6,6 +6,7 @@ Name: Jianhua Deng
 Date: 11/07/2023 
 Hand.cpp implement the Hand class.
 */
+
 // Big Five and constructor
 /**
  * @post: Construct a new Hand object
