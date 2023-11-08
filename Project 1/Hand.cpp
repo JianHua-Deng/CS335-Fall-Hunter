@@ -28,7 +28,6 @@ Hand::Hand(const Hand& other){
 Hand& Hand::operator=(const Hand& other){
     if(this != &other){
         this->cards_ = other.cards_;
-        //std::copy(other.cards_.begin(), other.cards_.end(), this->cards_.begin());
     }
 
     return *this;

@@ -62,8 +62,6 @@ bool ActionCard::isPlayable(){
  */
 void ActionCard::Print() const{
 
-    std::string data;
-
     std::cout << "Type: " << this->getType() << "\n";
     std::cout << "Instruction: " << this->getInstruction() << "\n";
 

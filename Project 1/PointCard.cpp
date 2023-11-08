@@ -12,7 +12,7 @@ PointCard::PointCard():Card(){
  * For a card to be playable, it has to be drawn and the instruction has to be a valid number
 */
 bool PointCard::isPlayable(){
-    return getDrawn() && std::stoi(getInstruction()) > 0;
+    return (getDrawn() && std::stoi(getInstruction()) > 0);//if drawn is true and instruction is a number greater than 0
 }
 /**
  * @post: Print the Point Card in the following format:
