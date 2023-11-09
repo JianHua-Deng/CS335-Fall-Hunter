@@ -73,7 +73,6 @@ Card& Card::operator=(Card&& rhs){
     std::swap(this->instruction_, rhs.instruction_);
     std::swap(this->bitmap_, rhs.bitmap_);
     std::swap(this->drawn_, rhs.drawn_);
-
     return *this;
 }
 
