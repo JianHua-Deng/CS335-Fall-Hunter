@@ -3,6 +3,7 @@
 int halfSelectionSort (std::vector<int>& nums, int& duration){
     if(nums.size() > 50000){
         std::cout << "Vector Size is too Large" << std::endl;
+        return -1;
     }
 
     std::vector<int>::iterator i;
