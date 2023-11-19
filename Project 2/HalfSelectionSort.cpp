@@ -22,9 +22,9 @@ int halfSelectionSort (std::vector<int>& nums, int& duration){
     }
     
     if(nums.size() % 2 == 0){
-        return *(i-2);
+        return *(nums.begin() + (nums.size()/2) - 1);
     }else{
-        return *(i-1);
+        return *(nums.begin() + (nums.size()/2));
     }
     
 

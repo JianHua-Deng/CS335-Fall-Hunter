@@ -2,4 +2,4 @@
 #include <iostream>
 #include <algorithm>
 
-int standardSort ( std::vector<int>& nums, int& duration);
+int standardSort (std::vector<int>& nums, int& duration);
