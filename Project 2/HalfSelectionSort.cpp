@@ -1,6 +1,9 @@
 #include "HalfSelectionSort.hpp"
 
 int halfSelectionSort (std::vector<int>& nums, int& duration){
+
+    auto start = std::chrono::steady_clock::now();
+
     if(nums.size() > 50000){
         std::cout << "Vector Size is too Large" << std::endl;
         return -1;
@@ -21,6 +24,9 @@ int halfSelectionSort (std::vector<int>& nums, int& duration){
         std::iter_swap(i, min);
     }
     
+    auto end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+
     if(nums.size() % 2 == 0){
         return *(nums.begin() + (nums.size()/2) - 1);
     }else{
