@@ -22,7 +22,7 @@ void percDown (std::vector<int>& heap, std::vector<int>::size_type hole){
     int toBeInsert;
                                         //left child
     for(toBeInsert = std::move(heap[0]); hole * 2 < heap.size(); hole = child){
-        child = hole * 2 + 1;//left child
+        child = hole * 2;//left child
         if(child != heap.size() - 1 && heap[child] > heap[child + 1]){
             child++;
         }
@@ -86,7 +86,7 @@ void percDown (std::vector<int>& heap, std::vector<int>::size_type hole){
 
 void buildHeap (std::vector<int>& heap){
 
-    for(int i = heap.size()/2 - 1; i >= 1; --i){
+    for(int i = heap.size()/2; i >= 1; --i){
         heap[0] = std::move(heap[i]);
         percDown(heap, i);
     }
