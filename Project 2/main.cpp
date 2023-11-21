@@ -4,7 +4,7 @@
 #include "InPlaceMergeSort.hpp"
 #include "HalfHeapSort.hpp"
 void print(std::vector<int>& nums){
-    for(int i = 0; i < nums.size(); i++){
+    for(int i = 1; i < nums.size(); i++){
         std::cout << nums[i] << ", ";
     }
     std::cout << std::endl;
