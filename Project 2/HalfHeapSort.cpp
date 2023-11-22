@@ -6,15 +6,22 @@ At the end of the sort, you should have deleted elements smaller up to but not i
 */
 int halfHeapSort (std::vector<int>& nums, int& duration){
 
+    
     nums.push_back(std::move(nums[0]));//moving the first element to the end of the vector
     buildHeap(nums);
-    for(int i = 1; i < nums.size()/2; i++){
-        nums.erase(nums.begin() + 1);
-        nums[0] = std::move(nums[1]);
+
+    int size = nums.size();
+
+    for(int i = 0; i < (size/2); i++){
+
+        nums[0] = std::move(nums[nums.size() - 1]);
+        nums.erase(std::prev(nums.end()));
+        
+        //std::cout << "nums[0]: " << nums[0] << "\n";
         percDown(nums, 1);
     }
-
-    return -1;
+    
+    return nums[1];
 }
 
 // parameter "hole" is the index of the hole.

@@ -28,10 +28,10 @@ int main(){
     //std::cout << "Median: "<< standardSort(vec3, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< mergeSort(vec3, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< inPlaceMergeSort(vec3, duration) << ", Duration: " << duration <<std::endl;
-    std::cout << "Median: "<< halfHeapSort(vec3, duration) << ", Duration: " << duration <<std::endl;
+    std::cout << "Median: "<< halfHeapSort(vec4, duration) << ", Duration: " << duration <<std::endl;
     //print(vec1);
     //print(vec2);
     //print(vec3);
-    printHeap(vec3);
+    printHeap(vec4);
     return 0;
 }
