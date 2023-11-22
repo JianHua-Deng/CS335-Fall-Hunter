@@ -5,10 +5,15 @@ For heapsort, you don't have to use iterators. Using array subscripts is more ef
 At the end of the sort, you should have deleted elements smaller up to but not including the median - i.e. at the end of the sort, the median should be at the root of the remaining heap.
 */
 int halfHeapSort (std::vector<int>& nums, int& duration){
-    int min;
+
     nums.push_back(std::move(nums[0]));//moving the first element to the end of the vector
     buildHeap(nums);
-    
+    for(int i = 1; i < nums.size()/2; i++){
+        nums.erase(nums.begin() + 1);
+        nums[0] = std::move(nums[1]);
+        percDown(nums, 1);
+    }
+
     return -1;
 }
 
