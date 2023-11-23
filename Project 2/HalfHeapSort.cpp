@@ -10,9 +10,14 @@ int halfHeapSort (std::vector<int>& nums, int& duration){
     nums.push_back(std::move(nums[0]));//moving the first element to the end of the vector
     buildHeap(nums);
 
-    int size = nums.size();
+    int half = nums.size() - 1;//size - 1 is the actual size of array that contains the actual content we need, because value at index 0 is a placeholder
+    if(half % 2 == 0){
+        half = (half/2) - 1;
+    }else{
+        half = half/2;
+    }
 
-    for(int i = 0; i < (size/2); i++){
+    for(int i = 0; i < half; i++){
 
         nums[0] = std::move(nums[nums.size() - 1]);
         nums.erase(std::prev(nums.end()));
