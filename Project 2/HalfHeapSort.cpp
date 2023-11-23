@@ -11,6 +11,7 @@ int halfHeapSort (std::vector<int>& nums, int& duration){
     buildHeap(nums);
 
     int half = nums.size() - 1;//size - 1 is the actual size of array that contains the actual content we need, because value at index 0 is a placeholder
+    //Check if the size is even or odd, if it's even, we are taking the lesser of the two middle element, thus we subtract 1
     if(half % 2 == 0){
         half = (half/2) - 1;
     }else{
