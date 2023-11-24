@@ -6,17 +6,24 @@ At the end of the sort, you should have deleted elements smaller up to but not i
 */
 int halfHeapSort (std::vector<int>& nums, int& duration){
 
+    auto start = std::chrono::steady_clock::now();
     
     nums.push_back(std::move(nums[0]));//moving the first element to the end of the vector
     buildHeap(nums);
 
-    int half = nums.size() - 1;//size - 1 is the actual size of array that contains the actual content we need, because value at index 0 is a placeholder
-    //Check if the size is even or odd, if it's even, we are taking the lesser of the two middle element, thus we subtract 1
+    /*
+    size - 1 is the actual size of array that contains the actual content we need, because value at index 0 is a placeholder
+    Check if the size is even or odd, if it's even, we are taking the lesser of the two middle element, thus we subtract 1 again
+    */
+    int half = (nums.size() - 2)/2;
+    
+    /*
     if(half % 2 == 0){
         half = (half/2) - 1;
     }else{
         half = half/2;
     }
+    */
 
     for(int i = 0; i < half; i++){
 
@@ -26,6 +33,9 @@ int halfHeapSort (std::vector<int>& nums, int& duration){
         //std::cout << "nums[0]: " << nums[0] << "\n";
         percDown(nums, 1);
     }
+
+    auto end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     
     return nums[1];
 }
