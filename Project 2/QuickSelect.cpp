@@ -6,21 +6,23 @@ int quickSelect (std::vector<int>& nums, int& duration){
     quickSelect(nums, nums.begin(), nums.end() - 1, nums.begin() + (nums.size() - 1)/2);
 
     auto end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
     return *(nums.begin() + (nums.size() - 1)/2);
 }
 
 void quickSelect (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high, std::vector<int>::iterator center){
 
-    if(!(low + 10 <= high)){//if the range contains less than 10 elements
-        std::sort(low, high);
+    if(!(low + 9 <= high)){//if the range contains is not more than 10 elements
+        std::sort(low, high + 1);
+        //std::cout << "It stops here, at Sort" << "\n";
         return;
     }
 
     std::vector<int>::iterator median = hoarePartition(nums, low, high);
 
     if(median == center){
+        //std::cout << "It stoppes here" << "\n";
         return;
     }else if (median < center){
         quickSelect(nums, median + 1, high, center);
@@ -31,11 +33,10 @@ void quickSelect (std::vector<int>& nums, std::vector<int>::iterator low, std::v
 
 std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high){
 
-    std::vector<int>::iterator pivot = medianof3(nums, low, high);
-    std::cout << "Pivot: " << *pivot << "\n";
+    std::vector<int>::iterator pivot = medianof3(nums, low, high);// return the pivot iterator, which is at high - 1
     std::vector<int>::iterator left = low;
     std::vector<int>::iterator right = high - 2; //high - 1 is the position of pivot, and high - 2 will be the right start of our partitioning
-
+    //std::cout << "\n" <<"Pivot: " << *pivot << "\n";
     /*Textbook implementation, didnt work
     for(;;){
         while(*(++left) < *pivot){}
@@ -67,26 +68,38 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
 
     ///*
     while(true){
-        while(left < high && *left < *pivot){
+        while(left < high - 1 && *left < *pivot){
             ++left;
         }
-        while(right > low && *right > *pivot){
+        while(right >= low && *right > *pivot){
             --right;
         }
+        //std::cout << "Pivot: " << *pivot << " Left: " << *left << " Right: " << *right << "\n";
         if(left >= right){
             break;
         }
         std::iter_swap(left, right);
+        ++left;
+        --right;
         
     }
+
     std::iter_swap(left, pivot);
+    /*
     
+    std::cout << "\n";
+    for(auto i = low; i <= high; i++){
+        std::cout  << *i << ", ";
+    }
+    std::cout << "\n";   
+    */
     return left;    
     //*/
 
     
 }
 
+//return iterator at high - 1, which will be the pivot
 std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high){
 
     std::vector<int>::iterator center = low;

@@ -14,7 +14,7 @@ int halfSelectionSort (std::vector<int>& nums, int& duration){
     std::vector<int>::iterator it;
 
     //if i != the middle element in the vector + 1 
-    for(i = nums.begin(); i != nums.begin() + (nums.size()/2) + 1; ++i){
+    for(i = nums.begin(); i <= nums.begin() + ((nums.size() - 1)/2); ++i){
         min = i;
         for(it = i + 1; it != nums.end(); ++it){
             if(*it < *min){
@@ -25,7 +25,7 @@ int halfSelectionSort (std::vector<int>& nums, int& duration){
     }
     
     auto end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
     return *(nums.begin() + (nums.size() - 1)/2);
     

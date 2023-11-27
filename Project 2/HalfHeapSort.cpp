@@ -35,9 +35,9 @@ int halfHeapSort (std::vector<int>& nums, int& duration){
     }
 
     auto end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-    
-    return nums[1];
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    nums.erase(nums.begin());
+    return nums[0];
 }
 
 // parameter "hole" is the index of the hole.

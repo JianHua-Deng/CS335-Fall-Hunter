@@ -7,7 +7,7 @@ int standardSort (std::vector<int>& nums, int& duration){
     std::sort(nums.begin(), nums.end());
 
     auto end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();    
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();  
 
     /*
     if(nums.size() % 2 == 0){
