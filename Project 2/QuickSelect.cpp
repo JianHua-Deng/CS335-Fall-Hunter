@@ -13,7 +13,7 @@ int quickSelect (std::vector<int>& nums, int& duration){
 
 void quickSelect (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high, std::vector<int>::iterator center){
 
-    if(!(low + 9 <= high)){//if the range contains less than 10 elements
+    if(!(low + 10 <= high)){//if the range contains less than 10 elements
         std::sort(low, high);
         return;
     }
@@ -32,14 +32,30 @@ void quickSelect (std::vector<int>& nums, std::vector<int>::iterator low, std::v
 std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high){
 
     std::vector<int>::iterator pivot = medianof3(nums, low, high);
+    std::cout << "Pivot: " << *pivot << "\n";
     std::vector<int>::iterator left = low;
-    std::vector<int>::iterator right = high - 2; //high - 1 is the position of pivot, and high - 2 will be the start of our partitioning
-    
+    std::vector<int>::iterator right = high - 2; //high - 1 is the position of pivot, and high - 2 will be the right start of our partitioning
+
+    /*Textbook implementation, didnt work
+    for(;;){
+        while(*(++left) < *pivot){}
+        while(*pivot < *(--right)){}
+        if(low < right){
+            std::iter_swap(left, right);
+        }else{
+            break;
+        }
+    }
+    std::iter_swap(left, pivot);
+    return left;
+    */
+
+    /*
     while(left <= right){
-        while(left + 1 <= high && *left < *pivot){
+        while(*left < *pivot){
             ++left;
         }
-        while(low <= right - 1 && *right > *pivot){
+        while(*right > *pivot){
             --right;
         }
         std::iter_swap(left, right);
@@ -47,23 +63,26 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
     std::iter_swap(left, pivot);
 
     return left;
-    /*
+    */
+
+    ///*
     while(true){
-        while(*left < *pivot){
+        while(left < high && *left < *pivot){
             ++left;
         }
-        while(*right > *pivot){
+        while(right > low && *right > *pivot){
             --right;
         }
         if(left >= right){
             break;
         }
         std::iter_swap(left, right);
+        
     }
     std::iter_swap(left, pivot);
     
     return left;    
-    */
+    //*/
 
     
 }
