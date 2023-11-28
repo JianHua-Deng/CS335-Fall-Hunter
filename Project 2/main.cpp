@@ -18,9 +18,10 @@ std::vector<int> readFile(std::string file){
 }
 
 void check(std::vector<int>& vec1, std::vector<int> vec2){
+    std::string check = "Passed\n";
     if(vec1.size() != vec2.size()){
         std::cout << "Not even the Size are the same BRUH";
-        std::cout << "\n" << "Vec1 Size: " << vec1.size() << "Vec2 Size: " << vec2.size() << "\n";
+        std::cout << "\n" << "Vec1 Size: " << vec1.size() << ", Vec2 Size: " << vec2.size() << "\n";
 
     }
 
@@ -28,8 +29,10 @@ void check(std::vector<int>& vec1, std::vector<int> vec2){
 
         if(vec1[i] != vec2[i]){
             std::cout << vec1[i] << " != " << vec2[i] << "\n";
+            check = "Failed\n";
         }
     }
+    std::cout << check;
 
 }
 
@@ -74,8 +77,8 @@ int main(){
     //std::cout << "Median: "<< halfHeapSort(vec7, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< quickSelect(vec7, duration) << ", Duration: " << duration <<std::endl;
 
-    //std::cout << "Median: "<< halfHeapSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
-    std::cout << "Median: "<< quickSelect(inputVec1, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< halfHeapSort(inputVec1, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
+    std::cout << "Median: "<< quickSelect(inputVec4, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfSelectionSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;
 
 
@@ -86,14 +89,15 @@ int main(){
     //print(vec3);
     //print(vec3);
     //print(vec7);
-    print(inputVec1);
+    //print(inputVec1);
     
     //print(inputVec4);
 
     //std::cout << check(heapVec1Check, heapVec1After) << "\n";
 
+    
     //print(inputVec1);
-    //check(inputVec4, quickSelectVec4Check);
+    check(inputVec4, quickSelectVec4Check);
     //printHeap(vec3);
     //check(inputVec4, selectVec4Check);
     return 0;

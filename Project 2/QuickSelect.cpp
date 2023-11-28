@@ -13,7 +13,7 @@ int quickSelect (std::vector<int>& nums, int& duration){
 
 void quickSelect (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high, std::vector<int>::iterator center){
 
-    if(!(low + 9 <= high)){//if the range contains is not more than 10 elements
+    if(!(low + 10 <= high)){//if the range contains is not more than 10 elements
         std::sort(low, high + 1);
         //std::cout << "It stops here, at Sort" << "\n";
         return;
@@ -83,7 +83,7 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
         --right;
         
     }
-
+    //*/
     std::iter_swap(left, pivot);
     /*
     
@@ -94,7 +94,7 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
     std::cout << "\n";   
     */
     return left;    
-    //*/
+    
 
     
 }
@@ -106,10 +106,12 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
     std::advance(center, std::distance(low, high) / 2);//moving iterator center to point to the middle value of the list
     
     
-    if(*low == *center && *low == *high){//if all 3 values are equal
+    if((*low == *center && *low == *high) || *low == *center || *low == *high){//if all 3 values are equal OR low and center are same value OR low and high has the same value
 
         std::iter_swap(low, high - 1);   
 
+    }else if(*center == *high){// if middle and right most has the same value
+        std::iter_swap(center, high - 1);
     }else{
 
         if(*center < *low){
