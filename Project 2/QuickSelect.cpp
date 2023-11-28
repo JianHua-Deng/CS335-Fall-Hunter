@@ -35,7 +35,7 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
 
     std::vector<int>::iterator pivot = medianof3(nums, low, high);// return the pivot iterator, which is at high - 1
     std::vector<int>::iterator left = low;
-    std::vector<int>::iterator right = high - 2; //high - 1 is the position of pivot, and high - 2 will be the right start of our partitioning
+    std::vector<int>::iterator right = pivot - 1; //high is the position of pivot, and high - 1 will be the right start of our partitioning
     //std::cout << "\n" <<"Pivot: " << *pivot << "\n";
     /*Textbook implementation, didnt work
     for(;;){
@@ -104,8 +104,27 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 
     std::vector<int>::iterator center = low;
     std::advance(center, std::distance(low, high) / 2);//moving iterator center to point to the middle value of the list
-    
-    
+ 
+    if((*low == *center && *low == *high) || *low == *center || *low == *high){//if all 3 values are equal OR low and center are same value OR low and high has the same value
+
+        std::iter_swap(low, high);   
+
+    }else if(*center == *high){// if middle and right most has the same value
+        std::iter_swap(center, high);
+    }else{
+
+        if((*low < *center && *center < *high) || (*high < *center && *center < *low )){
+            std::iter_swap(center, high);//center should be the pivot
+        }else if((*center < *low  && *low < *high) || (*high < *low && *low < *center)){
+            std::iter_swap(low, high);//low should be the pivot
+        }else{
+            return high;//high should be the pivot
+        }
+
+    }
+
+    return high;
+    /*
     if((*low == *center && *low == *high) || *low == *center || *low == *high){//if all 3 values are equal OR low and center are same value OR low and high has the same value
 
         std::iter_swap(low, high - 1);   
@@ -126,5 +145,6 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
         std::iter_swap(center, high - 1);       
     }
     return high - 1;  
+    */
 }
 
