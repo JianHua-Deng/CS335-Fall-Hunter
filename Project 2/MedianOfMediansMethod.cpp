@@ -1,4 +1,4 @@
-#include "QuickSelect.hpp"
+#include "MedianOfMediansMethod.hpp"
 
 int quickSelect (std::vector<int>& nums, int& duration){
     auto start = std::chrono::steady_clock::now();

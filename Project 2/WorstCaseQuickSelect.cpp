@@ -7,7 +7,7 @@ std::vector<int>& worstCaseQuickSelect(){
         worse.push_back(i);
     }
 
-    //std::random_shuffle(worse.begin(), worse.end());
+    std::random_shuffle(worse.begin(), worse.end());
 
     return worse;
 }
