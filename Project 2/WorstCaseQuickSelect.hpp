@@ -2,5 +2,16 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-// worstCaseQuickSelect generates a worst-case input for a quickselect that uses median-of-3 partitioning. The input it generates must be of length 20,000, and contain each number from 1-20000 once.
-std::vector<int>& worstCaseQuickSelect ();
+
+std::vector<int>& worstCaseQuickSelect(){
+    //such that the pivot we selected should always be 1 more than the smallest
+    std::vector<int> worse;
+    for(int i = 1; i <= 20000; i++){
+        worse.push_back(i);
+    }
+
+    std::random_shuffle(worse.begin(), worse.end());
+
+    return worse;
+}
+

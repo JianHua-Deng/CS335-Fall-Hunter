@@ -60,8 +60,10 @@ int main(){
     std::vector<int> vec5 = {78, 4, 3, 78, 23, 50, 78};//testing if median of 3 work for 3 of same value, median should be 50
     std::vector<int> vec6 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99};// odd, median should be 61
     std::vector<int> vec7 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99, 237};// even, median should be 61
+    std::vector<int> vec8 = {1,5,3,4,2,6,7,8,9,10};// even, median should be 61
     std::vector<int> inputVec1 = readFile("input1.txt");
     std::vector<int> inputVec4 = readFile("input4.txt");
+    std::vector<int> inputVec9 = readFile("input9.txt");
     std::vector<int> selectVec1Check = readFile("selectionsort1.txt");
     std::vector<int> selectVec4Check = readFile("selectionsort4.txt");
     std::vector<int> heapVec1Check = readFile("heapsort1.txt");
@@ -72,13 +74,13 @@ int main(){
 
     //std::cout << "Median: "<< halfSelectionSort(vec3, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< standardSort(vec7, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< mergeSort(vec2, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< inPlaceMergeSort(vec3, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< mergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfHeapSort(vec7, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< quickSelect(vec7, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< quickSelect(vec8, duration) << ", Duration: " << duration <<std::endl;
 
-    //std::cout << "Median: "<< halfHeapSort(inputVec1, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
-    std::cout << "Median: "<< quickSelect(inputVec4, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< halfHeapSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
+    //std::cout << "Median: "<< quickSelect(inputVec4, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfSelectionSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;
 
 
@@ -89,6 +91,7 @@ int main(){
     //print(vec3);
     //print(vec3);
     //print(vec7);
+    //print(vec8);
     //print(inputVec1);
     
     //print(inputVec4);
@@ -97,7 +100,8 @@ int main(){
 
     
     //print(inputVec1);
-    check(inputVec4, quickSelectVec4Check);
+    //check(inputVec4, quickSelectVec4Check);
+    //check(inputVec4, heapVec4Check);
     //printHeap(vec3);
     //check(inputVec4, selectVec4Check);
     return 0;
