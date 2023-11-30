@@ -27,9 +27,9 @@ void swapforworse(std::vector<int>::iterator start, std::vector<int>::iterator m
     std::iter_swap(center, nextBigger);
 
     if(*center < *median){//gonna recurse on the right side
-        swapforworse(start + *center , median, end, size/2, nums);
+        swapforworse(center + 1, median, end, size/2, nums);
     }else{
-        swapforworse(start, median, end - *center, size/2, nums);
+        swapforworse(start, median, median - 1, size/2, nums);
     }
 }
 
@@ -38,7 +38,7 @@ void swapforworse(std::vector<int>::iterator start, std::vector<int>::iterator m
 std::vector<int>& worstCaseQuickSelect(){
     //such that the pivot we selected should always be 1 more than the smallest
     static std::vector<int> worse;
-    for(int i = 1; i <= 20000; ++i){
+    for(int i = 1; i <= 20; ++i){
         worse.push_back(i);
     }
 
@@ -47,8 +47,9 @@ std::vector<int>& worstCaseQuickSelect(){
     std::vector<int>::iterator start = worse.begin();
     std::vector<int>::iterator end = worse.end() - 1;
     std::vector<int>::iterator center = worse.begin() + (worse.size() - 1)/2;
+    
 
-    //swapforworse(start, median, end, size);
+    swapforworse(start, center, end, size, worse);
 
     
 
