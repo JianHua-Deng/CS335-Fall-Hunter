@@ -4,6 +4,7 @@
 #include "InPlaceMergeSort.hpp"
 #include "HalfHeapSort.hpp"
 #include "QuickSelect.hpp"
+#include "WorstCaseQuickSelect.hpp"
 #include <fstream>
 
 std::vector<int> readFile(std::string file){
@@ -61,6 +62,8 @@ int main(){
     std::vector<int> vec6 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99};// odd, median should be 61
     std::vector<int> vec7 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99, 237};// even, median should be 61
     std::vector<int> vec8 = {1,5,3,4,2,6,7,8,9,10};// even, median should be 61
+    std::vector<int>& worse = worstCaseQuickSelect();
+
     std::vector<int> inputVec1 = readFile("input1.txt");
     std::vector<int> inputVec4 = readFile("input4.txt");
     std::vector<int> inputVec9 = readFile("input9.txt");
@@ -77,7 +80,7 @@ int main(){
     //std::cout << "Median: "<< mergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfHeapSort(vec7, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< quickSelect(vec8, duration) << ", Duration: " << duration <<std::endl;
+    std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration <<std::endl;
 
     //std::cout << "Median: "<< halfHeapSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
     //std::cout << "Median: "<< quickSelect(inputVec4, duration) << ", Duration: " << duration <<std::endl;
@@ -92,6 +95,7 @@ int main(){
     //print(vec3);
     //print(vec7);
     //print(vec8);
+    //print(worse);
     //print(inputVec1);
     
     //print(inputVec4);

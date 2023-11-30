@@ -46,38 +46,10 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
     std::vector<int>::iterator left = low;
     std::vector<int>::iterator right = pivot - 1; //high is the position of pivot, and high - 1 will be the right start of our partitioning
     //std::cout << "\n" <<"Pivot: " << *pivot << "\n";
-    /*Textbook implementation, didnt work
-    for(;;){
-        while(*(++left) < *pivot){}
-        while(*pivot < *(--right)){}
-        if(low < right){
-            std::iter_swap(left, right);
-        }else{
-            break;
-        }
-    }
-    std::iter_swap(left, pivot);
-    return left;
-    */
-
-    /*
-    while(left <= right){
-        while(*left < *pivot){
-            ++left;
-        }
-        while(*right > *pivot){
-            --right;
-        }
-        std::iter_swap(left, right);
-    }
-    std::iter_swap(left, pivot);
-
-    return left;
-    */
 
     ///*
     while(true){
-        while(left < high - 1 && *left < *pivot){
+        while(left < pivot && *left < *pivot){
             ++left;
         }
         while(right > low && *right > *pivot){
@@ -134,7 +106,7 @@ int quickSelect (std::vector<int>& nums, int& duration){
     quickSelect(nums, nums.begin(), nums.end() - 1, nums.begin() + (nums.size() - 1)/2);
 
     auto end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     return *(nums.begin() + (nums.size() - 1)/2);//returning the middle element as the pivot
 }
