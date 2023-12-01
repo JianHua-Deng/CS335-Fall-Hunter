@@ -46,9 +46,11 @@ std::vector<int>& worstCaseQuickSelect(){
     //std::vector<int>::iterator end = worse.end();
 
     
+    /*
     for(int i = 1; i <= size; i++){
         worse[i - 1] = i;
     }
+    */
     
     
     
