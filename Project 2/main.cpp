@@ -62,6 +62,7 @@ int main(){
     std::vector<int> vec6 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99};// odd, median should be 61
     std::vector<int> vec7 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99, 237};// even, median should be 61
     std::vector<int> vec8 = {1,5,3,4,2,6,7,8,9,10};// even, median should be 61
+    std::vector<int> vec9 = {1, 11, 3, 13, 5, 15, 7, 17, 9, 19, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     std::vector<int>& worse = worstCaseQuickSelect();
 
     std::vector<int> inputVec1 = readFile("input1.txt");
@@ -81,6 +82,8 @@ int main(){
     //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfHeapSort(vec7, duration) << ", Duration: " << duration <<std::endl;
     std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration <<std::endl;
+    
+    //hoarePartition(vec9, vec9.begin(), vec9.end() - 1);
 
     //std::cout << "Median: "<< halfHeapSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
     //std::cout << "Median: "<< quickSelect(inputVec4, duration) << ", Duration: " << duration <<std::endl;
@@ -95,6 +98,7 @@ int main(){
     //print(vec3);
     //print(vec7);
     //print(vec8);
+    //print(vec9);
     //print(worse);
     //print(inputVec1);
     

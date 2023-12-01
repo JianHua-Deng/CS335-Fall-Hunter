@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 
+/*
 //return the iterator of a number in the vector
 std::vector<int>::iterator search(std::vector<int>::iterator start, std::vector<int>::iterator end, int value){
     std::vector<int>::iterator it = start;
@@ -33,20 +34,30 @@ void swapforworse(std::vector<int>::iterator start, std::vector<int>::iterator m
     }
 }
 
-
+*/
 
 std::vector<int>& worstCaseQuickSelect(){
     //such that the pivot we selected should always be 1 more than the smallest
-    static std::vector<int> worse;
-    for(int i = 1; i <= 20000; ++i){
-        worse.push_back(i);
+    int size = 200000;
+    int halfsize = (size)/2;
+    static std::vector<int> worse(size);
+    std::vector<int>::iterator start = worse.begin();
+    std::vector<int>::iterator center = worse.begin() + halfsize;
+    //std::vector<int>::iterator end = worse.end();
+
+    for(int i = 0; i < size / 2; ++i){
+        if(i % 2 == 0){
+            *(start + i) = i + 1;
+        }else{
+            *(start + i) = halfsize + i;
+        }
+        *(center + i) = (i + 1) * 2;
     }
 
-    //std::random_shuffle(worse.begin(), worse.end());
-    int size = worse.size();
-    std::vector<int>::iterator start = worse.begin();
-    std::vector<int>::iterator end = worse.end() - 1;
-    std::vector<int>::iterator center = worse.begin() + (worse.size() - 1)/2;
+    std::random_shuffle(worse.begin(), worse.end());
+
+
+    //std::vector<int>::iterator center = worse.begin() + (worse.size() - 1)/2;
 
     //swapforworse(start, median, end, size);
 
