@@ -81,13 +81,13 @@ int main(){
     //std::cout << "Median: "<< mergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfHeapSort(vec7, duration) << ", Duration: " << duration <<std::endl;
-    std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration <<std::endl;
     
     //hoarePartition(vec9, vec9.begin(), vec9.end() - 1);
 
-    //std::cout << "Median: "<< halfHeapSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
-    //std::cout << "Median: "<< quickSelect(inputVec4, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< halfSelectionSort(inputVec4, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< halfHeapSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
+    std::cout << "Median: "<< quickSelect(inputVec9, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< halfSelectionSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
 
 
     
@@ -108,7 +108,7 @@ int main(){
 
     
     //print(inputVec1);
-    //check(inputVec4, quickSelectVec4Check);
+    //check(inputVec1, quickSelectVec1Check);
     //check(inputVec4, heapVec4Check);
     //printHeap(vec3);
     //check(inputVec4, selectVec4Check);

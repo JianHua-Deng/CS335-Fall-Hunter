@@ -43,6 +43,7 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high){
 
     std::vector<int>::iterator pivot = medianof3(nums, low, high);// return the pivot iterator, which is at high - 1
+    //std::cout << "Pivot: " << *pivot << "\n";
     std::vector<int>::iterator left = low;
     std::vector<int>::iterator right = pivot - 1; //high is the position of pivot, and high - 1 will be the right start of our partitioning
     //std::cout << "\n" <<"Pivot: " << *pivot << "\n";
