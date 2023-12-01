@@ -10,6 +10,8 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
     std::vector<int>::iterator center = low;
 
     std::advance(center, std::distance(low, high) / 2);//moving iterator center to point to the middle value of the list
+
+    std::cout << "LOW: " << *low << ", CENTER: " << *center << ", HIGH: " << *high << ", ";
  
     if((*low == *center && *low == *high) || *low == *center || *low == *high){//if all 3 values are equal OR low and center are same value OR low and high has the same value
 
@@ -43,7 +45,7 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high){
 
     std::vector<int>::iterator pivot = medianof3(nums, low, high);// return the pivot iterator, which is at high - 1
-    //std::cout << "Pivot: " << *pivot << "\n";
+    std::cout << "Pivot: " << *pivot << "\n";
     std::vector<int>::iterator left = low;
     std::vector<int>::iterator right = pivot - 1; //high is the position of pivot, and high - 1 will be the right start of our partitioning
     //std::cout << "\n" <<"Pivot: " << *pivot << "\n";
@@ -67,9 +69,17 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
     }
     //*/
     std::iter_swap(left, pivot);
+
     /*
+    for(int i = 0; i < nums.size(); i++){
+        std::cout  << nums[i] << ", ";
+    }
+    std::cout << std::endl;
+    */
+    /*
+
     
-    std::cout << "\n";
+    //std::cout << "\n";
     for(auto i = low; i <= high; i++){
         std::cout  << *i << ", ";
     }
