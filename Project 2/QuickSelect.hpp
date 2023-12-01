@@ -11,7 +11,7 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 
     std::advance(center, std::distance(low, high) / 2);//moving iterator center to point to the middle value of the list
 
-    std::cout << "LOW: " << *low << ", CENTER: " << *center << ", HIGH: " << *high << ", ";
+    //std::cout << "LOW: " << *low << ", CENTER: " << *center << ", HIGH: " << *high << ", ";
  
     if((*low == *center && *low == *high) || *low == *center || *low == *high){//if all 3 values are equal OR low and center are same value OR low and high has the same value
 
@@ -45,7 +45,7 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high){
 
     std::vector<int>::iterator pivot = medianof3(nums, low, high);// return the pivot iterator, which is at high - 1
-    std::cout << "Pivot: " << *pivot << "\n";
+    //std::cout << "Pivot: " << *pivot << "\n";
     std::vector<int>::iterator left = low;
     std::vector<int>::iterator right = pivot - 1; //high is the position of pivot, and high - 1 will be the right start of our partitioning
     //std::cout << "\n" <<"Pivot: " << *pivot << "\n";
@@ -117,7 +117,7 @@ int quickSelect (std::vector<int>& nums, int& duration){
     quickSelect(nums, nums.begin(), nums.end() - 1, nums.begin() + (nums.size() - 1)/2);
 
     auto end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
     return *(nums.begin() + (nums.size() - 1)/2);//returning the middle element as the pivot
 }

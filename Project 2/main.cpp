@@ -85,7 +85,7 @@ int main(){
     
 
     //std::cout << "Median: "<< halfHeapSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
-    //std::cout << "Median: "<< quickSelect(inputVec9, duration) << ", Duration: " << duration <<std::endl;
+    std::cout << "Median: "<< quickSelect(inputVec1, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfSelectionSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
 
 
@@ -98,7 +98,7 @@ int main(){
     //print(vec7);
     //print(vec8);
     //print(vec9);
-    print(worse);
+    //print(worse);
     //print(inputVec1);
     
     //print(inputVec4);
