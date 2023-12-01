@@ -81,7 +81,7 @@ int main(){
     //std::cout << "Median: "<< mergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfHeapSort(vec7, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration <<std::endl;
+    std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration <<std::endl;
     
 
     //std::cout << "Median: "<< halfHeapSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY

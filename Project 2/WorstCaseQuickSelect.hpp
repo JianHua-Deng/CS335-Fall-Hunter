@@ -38,12 +38,12 @@ void swapforworse(std::vector<int>::iterator start, std::vector<int>::iterator m
 
 std::vector<int>& worstCaseQuickSelect(){
     //such that the pivot we selected should always be 1 more than the smallest
-    int size = 2000;
+    int size = 20;
     int halfsize = (size - 1)/2;
     static std::vector<int> worse(size);
     std::vector<int>::iterator start = worse.begin();
     std::vector<int>::iterator center = worse.begin() + halfsize;
-    //std::vector<int>::iterator end = worse.end();
+    std::vector<int>::iterator end = worse.end() - 1;
 
     
     /*
@@ -52,9 +52,10 @@ std::vector<int>& worstCaseQuickSelect(){
     }
     */
     
+    *(end) = size;
+    *(end - 1) = size - 1;
     
-    
-    for(int i = 0; i < size / 2; ++i){
+    for(int i = 0; i < halfsize; ++i){
         if(i % 2 == 0){
             *(start + i) = i + 1;
         }else{
