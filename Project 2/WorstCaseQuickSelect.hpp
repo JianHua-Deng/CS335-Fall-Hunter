@@ -45,6 +45,13 @@ std::vector<int>& worstCaseQuickSelect(){
     std::vector<int>::iterator center = worse.begin() + halfsize;
     //std::vector<int>::iterator end = worse.end();
 
+    
+    for(int i = 1; i <= size; i++){
+        worse[i - 1] = i;
+    }
+    
+    
+    
     for(int i = 0; i < size / 2; ++i){
         if(i % 2 == 0){
             *(start + i) = i + 1;
@@ -53,7 +60,7 @@ std::vector<int>& worstCaseQuickSelect(){
         }
         *(center + i) = (i + 1) * 2;
     }
-
+    
     //std::random_shuffle(worse.begin(), worse.end());
 
 
