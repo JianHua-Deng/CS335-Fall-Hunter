@@ -92,8 +92,8 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
 }
 
 void quickSelect (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high, std::vector<int>::iterator center){
-
-    if(!(low + 9 <= high)){//if the range contains is not more than 10 elements
+    //!(low + 9 <= high)
+    if(high <= low + 9){//if low + 9 is greater than or equals to high, meaning the range from low to high has less than or equal to 10 element
         std::sort(low, high + 1);
         //std::cout << "It stops here, at Sort" << "\n";
         return;
