@@ -5,64 +5,66 @@
 #include <chrono>
 
 std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high){
-    std::vector<int> vec(low, high + 1);
     //std::vector<int>::iterator median;
-    std::vector<int>::iterator firstGreater;
-    std::vector<int>::iterator secondGreater;
-    std::vector<int>::iterator thirdGreater;
+    std::vector<int>::iterator greater1;
+    std::vector<int>::iterator greater2;
+    std::vector<int>::iterator winner1;
+    std::vector<int>::iterator winner2;
+    std::vector<int>::iterator winner3;
     std::vector<int>::iterator loser1;
     std::vector<int>::iterator loser2;
+    std::vector<int>::iterator loser3;
+    std::vector<int>::iterator loser4;
 
     //I know this is extra, but I wanted to visualize like what the professor said in class cuz I had the notes down
-    std::vector<int>::iterator a = vec.begin();
-    std::vector<int>::iterator b = vec.begin() + 1;
-    std::vector<int>::iterator c = vec.begin() + 2;
-    std::vector<int>::iterator d = vec.begin() + 3;
-    std::vector<int>::iterator e = vec.begin() + 4;
+    std::vector<int>::iterator a = low;
+    std::vector<int>::iterator b = low + 1;
+    std::vector<int>::iterator c = low + 2;
+    std::vector<int>::iterator d = low + 3;
+    std::vector<int>::iterator e = low + 4;
 
-    if(*a > *b){//1st comparison, 
-        std::iter_swap(a, b);
-    }
-
-    if(*c > *d){//2nd comparison
-        std::iter_swap(c, d);
-    }
-    //b and d should be be greater of the two groups 
-
-
-    if(*b > *d){//3rd comparison
-        if(*b > *e){
-            
-        }else{
-
-        }
+    if(*a > *b){
+        greater1 = a;
+        loser1 = b;
     }else{
-        if(*d > *e){
-
-        }else{
-
-        }
+        greater1 = b;
+        loser1 = a;
     }
 
-
-    if(*d > *e){//4th comparison
-        if(*loser1 > *d){//5th comparison
-            loser2 = d;
-        }else{
-            loser2 = loser1;
-        }
+    if(*c > *d){
+        greater2 = c;
+        loser2 = d;
     }else{
-        if(*loser1 > *e){//5th comparison
-            loser2 = e;
-        }else{
-            loser2 = loser1;
-        }        
+        greater2 = d;
+        loser2 = c;
     }
 
-    if(*loser2 > *e){//6th comparison
-        return loser2;
+    if(*greater1 > *greater2){
+        winner1 = greater1;
+        loser3 = greater2;
     }else{
-        return e;
+        winner1 = greater2;
+        loser3 = greater1;
+    }
+
+    if(*loser3 > *e){
+        winner2 = loser3;
+        loser4 = e;
+    }else{
+        winner2 = e;
+        loser4 = loser3;
+    }
+
+    if(*loser4 > *loser2){
+        winner3 = loser4;
+    }else{
+        winner3 = loser2;
+    }
+
+    if(*winner3 > *loser1){
+        return winner3;
+    }else{
+        return loser1;
     }
 
 

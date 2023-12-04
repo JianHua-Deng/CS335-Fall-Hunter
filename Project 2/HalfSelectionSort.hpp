@@ -7,7 +7,7 @@
 int halfSelectionSort (std::vector<int>& nums, int& duration){
 
     auto start = std::chrono::steady_clock::now();
-
+    
     if(nums.size() > 50000){
         std::cout << "Vector Size is too Large" << std::endl;
         return -1;
