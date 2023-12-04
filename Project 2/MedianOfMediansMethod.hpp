@@ -5,6 +5,7 @@
 #include <chrono>
 
 std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high){
+    std::vector<int> vec(low, high + 1);
     //std::vector<int>::iterator median;
     std::vector<int>::iterator firstGreater;
     std::vector<int>::iterator secondGreater;
@@ -13,29 +14,36 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
     std::vector<int>::iterator loser2;
 
     //I know this is extra, but I wanted to visualize like what the professor said in class cuz I had the notes down
-    std::vector<int>::iterator a = low;
-    std::vector<int>::iterator b = low + 1;
-    std::vector<int>::iterator c = low + 2;
-    std::vector<int>::iterator d = low + 3;
-    std::vector<int>::iterator e = low + 4;
+    std::vector<int>::iterator a = vec.begin();
+    std::vector<int>::iterator b = vec.begin() + 1;
+    std::vector<int>::iterator c = vec.begin() + 2;
+    std::vector<int>::iterator d = vec.begin() + 3;
+    std::vector<int>::iterator e = vec.begin() + 4;
 
-    if(*a > *b){//1st comparison
-        firstGreater = a;
-    }else{
-        firstGreater = b;
+    if(*a > *b){//1st comparison, 
+        std::iter_swap(a, b);
     }
-    
+
     if(*c > *d){//2nd comparison
-        secondGreater = c;
+        std::iter_swap(c, d);
+    }
+    //b and d should be be greater of the two groups 
+
+
+    if(*b > *d){//3rd comparison
+        if(*b > *e){
+            
+        }else{
+
+        }
     }else{
-        secondGreater = d;
+        if(*d > *e){
+
+        }else{
+
+        }
     }
 
-    if(*firstGreater > *secondGreater){//3rd comparison
-        loser1 = secondGreater;
-    }else{
-        loser1 = firstGreater;
-    }
 
     if(*d > *e){//4th comparison
         if(*loser1 > *d){//5th comparison
