@@ -4,8 +4,12 @@
 #include <algorithm>
 #include <chrono>
 
+void lessof4(std::vector<int>& medians, std::vector<int>::iterator low, std::vector<int>::iterator high){
+
+}
+
 std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high){
-    //std::vector<int>::iterator median;
+    //I know these are extra and may cause slow downs, but I wanted to visualize so its easier to read this way
     std::vector<int>::iterator greater1;
     std::vector<int>::iterator greater2;
     std::vector<int>::iterator winner1;
@@ -16,14 +20,13 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
     std::vector<int>::iterator loser3;
     std::vector<int>::iterator loser4;
 
-    //I know this is extra, but I wanted to visualize like what the professor said in class cuz I had the notes down
     std::vector<int>::iterator a = low;
     std::vector<int>::iterator b = low + 1;
     std::vector<int>::iterator c = low + 2;
     std::vector<int>::iterator d = low + 3;
     std::vector<int>::iterator e = low + 4;
 
-    if(*a > *b){
+    if(*a > *b){//1st comparison
         greater1 = a;
         loser1 = b;
     }else{
@@ -31,7 +34,7 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         loser1 = a;
     }
 
-    if(*c > *d){
+    if(*c > *d){//2nd comparisons
         greater2 = c;
         loser2 = d;
     }else{
@@ -39,7 +42,7 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         loser2 = c;
     }
 
-    if(*greater1 > *greater2){
+    if(*greater1 > *greater2){//3rd comparisons
         winner1 = greater1;
         loser3 = greater2;
     }else{
@@ -47,7 +50,7 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         loser3 = greater1;
     }
 
-    if(*loser3 > *e){
+    if(*loser3 > *e){//4th comparisons
         winner2 = loser3;
         loser4 = e;
     }else{
@@ -55,18 +58,33 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         loser4 = loser3;
     }
 
-    if(*loser4 > *loser2){
+    if(*loser4 > *loser2){//5th comparisons
         winner3 = loser4;
     }else{
         winner3 = loser2;
     }
 
-    if(*winner3 > *loser1){
+    if(*winner3 > *loser1){//6th comparisons
         return winner3;
     }else{
         return loser1;
     }
 
+
+}
+
+int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high ){
+    std::vector<int> medians;
+    std::vector<int>::iterators it = low;
+    for(; it + 5 < high + 1; it = it + 5){//it + 5 will be the start of next 5 
+        medians.push_back(*medianOfFive(iterators, itertors + 4));//it + 4 will be the end of the current groups of 5
+    }
+
+    if(std::distance(it, high) == 3){
+        medians.push_back(*medianof3(nums, it, high));
+    }else if(std::distance(it, high) == 4){
+        lessof4(median, it, high);
+    }
 
 }
 
@@ -79,32 +97,24 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 
     //std::cout << "LOW: " << *low << ", CENTER: " << *center << ", HIGH: " << *high << ", ";
  
-    if((*low == *center && *low == *high) || *low == *center || *low == *high){//if all 3 values are equal OR low and center are same value OR low and high has the same value
 
-        std::iter_swap(low, high);   
+    if((*low < *center && *center < *high) || (*high < *center && *center < *low )){
 
-    }else if(*center == *high){// if middle and right most has the same value
-    
-        std::iter_swap(center, high);
+        return center;
+        //std::iter_swap(center, high);//center should be the pivot
+
+    }else if((*center < *low  && *low < *high) || (*high < *low && *low < *center)){
+
+        return low;
+        //std::iter_swap(low, high);//low should be the pivot
 
     }else{
 
-        if((*low < *center && *center < *high) || (*high < *center && *center < *low )){
-
-            std::iter_swap(center, high);//center should be the pivot
-
-        }else if((*center < *low  && *low < *high) || (*high < *low && *low < *center)){
-
-            std::iter_swap(low, high);//low should be the pivot
-
-        }else{
-
-            return high;//high should be the pivot
-        }
-
+        return high;//high should be the pivot
     }
 
-    return high;
+
+    //return high;
 
 }
 
