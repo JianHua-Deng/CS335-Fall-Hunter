@@ -12,7 +12,6 @@ std::vector<int>::iterator medianof4(std::vector<int>::iterator low, std::vector
     std::vector<int>::iterator lesser1;
     std::vector<int>::iterator lesser2;
     std::vector<int>::iterator lesser3;
-    std::vector<int>::iterator winner2;
 
     if(*low < *(low+1)){
         lesser1 = low;
@@ -157,10 +156,12 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
 int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high ){
     if(nums.size() <= 24){
         std::sort(low, high + 1);
+        /*
         for(int i = 0; i < nums.size(); ++i){
             std::cout << nums[i] << ",";
         }
-        std::cout << "\n";        
+        std::cout << "\n";   
+        */     
         return *(low + std::distance(low, high)/2);
         
     }
@@ -170,7 +171,7 @@ int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, st
         medians.push_back(*medianOfFive(it, it + 4));//it + 4 will be the end of the current groups of 5
     }
 
-    std::cout << "Distance" << std::distance(it, high) << "\n";
+    //std::cout << "Distance" << std::distance(it, high) << "\n";
     if(std::distance(it, high + 1) == 3){//when there's 3 element left
         medians.push_back(*medianof3(nums, it, high));
     }else if(std::distance(it, high + 1) == 4){//when there's 4 element left
@@ -182,9 +183,22 @@ int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, st
 
 }
 
+std::vector<int>::iterator find(std::vector<int>& nums, int value, std::vector<int>::iterator low, std::vector<int>::iterator high){
+    while(low != high + 1){
+        if(*low == value){
+            return low;
+        }
+        ++low;
+    }
+    std::cout << "Something went WRONG!!!" << "\n";
+    return low;
+}
+
 std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high){
-    
-    std::vector<int>::iterator pivot = medianof3(nums, low, high);// return the pivot iterator, which is at high - 1
+    int pivotValue = medianOfMedians(nums, low, high);
+    std::vector<int>::iterator pivot = find(nums, pivotValue, low, high);// return the pivot iterator, which is at high - 1
+    std::iter_swap(pivot, high);
+    pivot = high;//iter_swap only swaps the value, hence, the iterator pivot itself is no longer pointing at where the pivot is
     //std::cout << "Pivot: " << *pivot << "\n";
     std::vector<int>::iterator left = low;
     std::vector<int>::iterator right = pivot - 1; //high is the position of pivot, and high - 1 will be the right start of our partitioning

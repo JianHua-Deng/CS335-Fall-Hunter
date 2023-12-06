@@ -3,9 +3,9 @@
 #include "MergeSort.hpp"
 #include "InPlaceMergeSort.hpp"
 #include "HalfHeapSort.hpp"
-//#include "QuickSelect.hpp"
+#include "QuickSelect.hpp"
 #include "WorstCaseQuickSelect.hpp"
-#include "MedianOfMediansMethod.hpp"
+//#include "MedianOfMediansMethod.hpp"
 #include <fstream>
 
 std::vector<int> readFile(std::string file){
@@ -66,7 +66,7 @@ int main(){
     std::vector<int> vec9 = {1, 11, 3, 13, 5, 15, 7, 17, 9, 19, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     std::vector<int> vec10 = {22, 15, 11, 4, 9};
     std::vector<int> vec11 = {14, 7, 2, 11};
-    std::vector<int> vec12 = {482, 719, 148, 863, 235, 527, 890, 14, 682, 378, 785, 620, 253, 498, 174, 937, 456, 611, 788, 72, 931, 315, 543, 869, 203, 567, 398, 629, 54, 760, 184, 941, 689};//33 number
+    std::vector<int> vec12 = {482, 719, 148, 863, 235, 527, 890, 14, 682, 378, 785, 620, 253, 498, 174, 937, 456, 611, 788, 72, 931, 315, 543, 869, 203, 567, 398, 629, 54, 760, 184, 941, 689, 670};//34 number
     //std::vector<int> vec12 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99}
     std::vector<int>& worse = worstCaseQuickSelect();
 
@@ -96,13 +96,14 @@ int main(){
     
 
     //std::cout << "Median: "<< halfHeapSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
-    //std::cout << "Median: "<< quickSelect(inputVec1, duration) << ", Duration: " << duration <<std::endl;
+    std::cout << "Median: "<< quickSelect(inputVec9, duration) << ", Duration: " << duration <<std::endl;
     //std::cout << "Median: "<< halfSelectionSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
 
 
-    std::cout << *(medianOfFive(vec10.begin(), vec10.end() - 1)) << "\n";
+    //std::cout << *(medianOfFive(vec10.begin(), vec10.end() - 1)) << "\n";
     //std::cout << *(medianof4(vec11.begin(), vec11.end() - 1)) << "\n";
     //std::cout << medianOfMedians(vec12, vec12.begin(), vec12.end() - 1) << "\n";
+
     //print(vec1);
     //print(vec2);
     //print(vec4);
