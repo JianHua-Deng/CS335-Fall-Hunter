@@ -4,13 +4,14 @@
 #include <algorithm>
 #include <chrono>
 
+//assuming the range between low and high only consists of 4 elements
 std::vector<int>::iterator medianof4(std::vector<int>::iterator low, std::vector<int>::iterator high){
     std::vector<int>::iterator loser1;
     std::vector<int>::iterator loser2;
     std::vector<int>::iterator loser3;
     std::vector<int>::iterator lesser1;
     std::vector<int>::iterator lesser2;
-    std::vector<int>::iterator winner1;
+    std::vector<int>::iterator lesser3;
     std::vector<int>::iterator winner2;
 
     if(*low < *(low+1)){
@@ -30,23 +31,21 @@ std::vector<int>::iterator medianof4(std::vector<int>::iterator low, std::vector
     }
 
     if(*lesser1 < *lesser2){
-        winner1 = lesser1;
         loser3 = lesser2;
     }else{
-        winner1 = lesser2;
         loser3 = lesser1;
     }
 
-    if(*loser3 < *loser2){
-        winner2 = loser3;
+    if(*loser1 < *loser2){
+        lesser3 = loser1;
     }else{
-        winner2 = loser2;
+        lesser3 = loser2;
     }
 
-    if(*winner2 < *loser1){
-        return winner2;
+    if(*loser3 < *lesser3){
+        return loser3;
     }else{
-        return loser1;
+        return lesser3;
     }
 
 }
@@ -82,12 +81,10 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 }
 
 std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high){
-    //I know these are extra and may cause slow downs, but I wanted to visualize so its easier to read this way
+    //I know these may be extras and will cause slow downs, but I wanted to visualize so its easier to read this way
     std::vector<int>::iterator greater1;
     std::vector<int>::iterator greater2;
     std::vector<int>::iterator winner1;
-    std::vector<int>::iterator winner2;
-    std::vector<int>::iterator winner3;
     std::vector<int>::iterator loserofGreatest;
     std::vector<int>::iterator loserofloser;
     std::vector<int>::iterator loser1;
@@ -118,7 +115,7 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         loser2 = c;
     }
 
-    if(*greater1 > *greater2){//3rd comparisons
+    if(*greater1 > *greater2){//3rd comparisons, compare to the greater of the two groups
 
         loser3 = greater2;
         loserofGreatest = loser1;
@@ -132,29 +129,25 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
 
     }
 
-    if(*loserofGreatest > *e){//4th comparisons
-        winner2 = loserofGreatest;
+    if(*loserofGreatest > *e){//4th comparisons, comparing the value who originally compared to the greatest of all during the 1st comparison with e
+        winner1 = loserofGreatest;
         loser4 = e;
     }else{
-        winner2 = e;
+        winner1 = e;
         loser4 = loserofGreatest;
     }
-    std::cout << "Winner: " << *winner2 << "| Loser3: " << *loser3 << "\n"; 
-    if(*winner2 > *loser3){//5th comparisons
-        
-        winner3 = winner2;
+
+    //std::cout << "Winner: " << *winner2 << "| Loser3: " << *loser3 << "\n"; 
+    if(*winner1 > *loser3){//5th comparisons, comparing the loser of the 3rd comparison to the winner of 4th comparison
         loser5 = loser3;
     }else{
-        
-        winner3 = loser3;
-        loser5 = winner2;
+        loser5 = winner1;
     }
-    std::cout << "Winner: " << *winner3 << "| LoserofLoser: " << *loserofloser << "\n"; 
-    if(*loser5 > *loserofloser){//6th comparisons
-        //std::cout << "Its HERE!" << "\n";
+    
+    //std::cout << "Winner: " << *winner3 << "| LoserofLoser: " << *loserofloser << "\n"; 
+    if(*loser5 > *loserofloser){//6th comparisons, loser of 5th comparison will now compare to the loser of loser(which are the smaller value who compared to the loser of the 3rd comparison)
         return loser5;
     }else{
-        //std::cout << "Its HERE LOSER!" << "\n";
         return loserofloser;
     }
 
@@ -167,8 +160,9 @@ int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, st
         for(int i = 0; i < nums.size(); ++i){
             std::cout << nums[i] << ",";
         }
-        std::cout << "\n";
+        std::cout << "\n";        
         return *(low + std::distance(low, high)/2);
+        
     }
     std::vector<int> medians;
     std::vector<int>::iterator it = low;
@@ -176,11 +170,13 @@ int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, st
         medians.push_back(*medianOfFive(it, it + 4));//it + 4 will be the end of the current groups of 5
     }
 
-    if(std::distance(it, high) == 3){//when there's 3 element left
+    std::cout << "Distance" << std::distance(it, high) << "\n";
+    if(std::distance(it, high + 1) == 3){//when there's 3 element left
         medians.push_back(*medianof3(nums, it, high));
-    }else if(std::distance(it, high) == 4){//when there's 4 element left
+    }else if(std::distance(it, high + 1) == 4){//when there's 4 element left
         medians.push_back(*medianof4(it, high));
     }
+    
 
     return medianOfMedians(medians, medians.begin(), medians.end() - 1);
 
