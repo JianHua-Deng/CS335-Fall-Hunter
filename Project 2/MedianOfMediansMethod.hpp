@@ -119,16 +119,17 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
     }
 
     if(*greater1 > *greater2){//3rd comparisons
-        winner1 = greater1;
+
         loser3 = greater2;
         loserofGreatest = loser1;
         loserofloser = loser2;
         
     }else{
-        winner1 = greater2;
+
         loser3 = greater1;
         loserofGreatest = loser2;
         loserofloser = loser1;
+
     }
 
     if(*loserofGreatest > *e){//4th comparisons
@@ -138,20 +139,20 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         winner2 = e;
         loser4 = loserofGreatest;
     }
-
-    if(*loser4 > *loser3){//5th comparisons
+    std::cout << "Winner: " << *winner2 << "| Loser3: " << *loser3 << "\n"; 
+    if(*winner2 > *loser3){//5th comparisons
         
-        winner3 = loser4;
+        winner3 = winner2;
         loser5 = loser3;
     }else{
         
         winner3 = loser3;
-        loser5 = loser4;
+        loser5 = winner2;
     }
-    //std::cout << "Winner: " << *winner3 << "| LoserofLoser: " << *loserofloser << "\n"; 
-    if(*winner3 > *loserofloser){//6th comparisons
+    std::cout << "Winner: " << *winner3 << "| LoserofLoser: " << *loserofloser << "\n"; 
+    if(*loser5 > *loserofloser){//6th comparisons
         //std::cout << "Its HERE!" << "\n";
-        return winner3;
+        return loser5;
     }else{
         //std::cout << "Its HERE LOSER!" << "\n";
         return loserofloser;

@@ -66,6 +66,7 @@ int main(){
     std::vector<int> vec9 = {1, 11, 3, 13, 5, 15, 7, 17, 9, 19, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     std::vector<int> vec10 = {29, 854, 395, 12, 60};
     std::vector<int> vec11 = {95,7,200,90};
+    std::vector<int> vec12 = {482, 719, 148, 863, 235, 527, 890, 14, 682, 378, 785, 620, 253, 498, 174, 937, 456, 611, 788, 72, 931, 315, 543, 869, 203, 567, 398, 629, 54, 760, 184, 941, 689};//33 number
     //std::vector<int> vec12 = {1, 4, 3, 78, 23, 50, 61, 90, 0, 65, 2, 5, 100, 154, 30, 29, 854, 395, 12, 60, 103, 632, 987, 63, 41, 9878, 662, 441, 44, 22, 99}
     std::vector<int>& worse = worstCaseQuickSelect();
 
@@ -99,10 +100,10 @@ int main(){
     //std::cout << "Median: "<< halfSelectionSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
 
 
-    std::cout << *(medianOfFive(vec10.begin(), vec10.end() - 1)) << "\n";
+    //std::cout << *(medianOfFive(vec10.begin(), vec10.end() - 1)) << "\n";
     //std::cout << *(medianof4(vec11.begin(), vec10.end() - 1)) << "\n";
+    std::cout << medianOfMedians(vec12, vec12.begin(), vec12.end() - 1);
 
-    //std::cout << medianOfMedians(vec6, vec6.begin(), vec6.end() - 1);
     //print(vec1);
     //print(vec2);
     //print(vec4);
