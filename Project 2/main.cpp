@@ -87,17 +87,18 @@ int main(){
     std::vector<int> quickSelectVec4Check = readFile("quickselect4.txt");
 
 
-    //std::cout << "Median: "<< halfSelectionSort(inputVec7, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< standardSort(inputVec5, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< mergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< halfHeapSort(inputVec2, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: "<< halfSelectionSort(inputVec7, duration) << ", Duration: " << duration << std::endl;
+    //std::cout << "Median: "<< standardSort(inputVec5, duration) << ", Duration: " << duration << std::endl;
+    //std::cout << "Median: "<< mergeSort(inputVec9, duration) << ", Duration: " << duration << std::endl;
+    //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration << std::endl;
+    //std::cout << "Median: "<< halfHeapSort(inputVec2, duration) << ", Duration: " << duration << std::endl;
+    //std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration << std::endl;
     
 
-    //std::cout << "Median: "<< halfHeapSort(inputVec1, duration) << ", Duration: " << duration <<std::endl;// IT SEEMS TO WORK YAYYYY
-    std::cout << "Median: "<< quickSelect(inputVec1, duration) << ", Duration: " << duration <<std::endl;
-    //std::cout << "Median: "<< halfSelectionSort(inputVec9, duration) << ", Duration: " << duration <<std::endl;
+    //std::cout << "Median: " << halfHeapSort(inputVec1, duration) << ", Duration: " << duration << std::endl;// IT SEEMS TO WORK YAYYYY
+    //std::cout << "Median: " << quickSelect(inputVec1, duration) << ", Duration: " << duration << std::endl;
+    std::cout << "Median: " << medianOfMediansMethod(vec6, duration) << ", Duration: " << duration << std::endl;
+    //std::cout << "Median: " << halfSelectionSort(inputVec9, duration) << ", Duration: " << duration << std::endl;
 
 
     //std::cout << *(medianOfFive(vec10.begin(), vec10.end() - 1)) << "\n";
@@ -109,6 +110,7 @@ int main(){
     //print(vec4);
     //print(vec3);
     //print(vec3);
+    print(vec6);
     //print(vec7);
     //print(vec8);
     //print(vec9);

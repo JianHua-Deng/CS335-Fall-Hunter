@@ -155,13 +155,7 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
 
 int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high ){
     if(nums.size() <= 24){
-        std::sort(low, high + 1);
-        /*
-        for(int i = 0; i < nums.size(); ++i){
-            std::cout << nums[i] << ",";
-        }
-        std::cout << "\n";   
-        */     
+        std::sort(low, high + 1);  
         return *(low + std::distance(low, high)/2);
         
     }
@@ -250,7 +244,7 @@ void quickSelect (std::vector<int>& nums, std::vector<int>::iterator low, std::v
     }
 }
 
-int quickSelect (std::vector<int>& nums, int& duration){
+int medianOfMediansMethod ( std::vector<int>& nums, int& duration ){
     auto start = std::chrono::steady_clock::now();
 
     quickSelect(nums, nums.begin(), nums.end() - 1, nums.begin() + (nums.size() - 1)/2);
