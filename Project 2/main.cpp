@@ -92,11 +92,11 @@ int main(){
     //std::cout << "Median: "<< mergeSort(inputVec9, duration) << ", Duration: " << duration << std::endl;
     //std::cout << "Median: "<< inPlaceMergeSort(inputVec9, duration) << ", Duration: " << duration << std::endl;
     //std::cout << "Median: "<< halfHeapSort(inputVec2, duration) << ", Duration: " << duration << std::endl;
-    //std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration << std::endl;
+    std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration << std::endl;
     
 
     //std::cout << "Median: " << halfHeapSort(inputVec1, duration) << ", Duration: " << duration << std::endl;// IT SEEMS TO WORK YAYYYY
-    std::cout << "Median: " << quickSelect(inputVec1, duration) << ", Duration: " << duration << std::endl;
+    //std::cout << "Median: " << quickSelect(inputVec1, duration) << ", Duration: " << duration << std::endl;
     //std::cout << "Median: " << medianOfMediansMethod(inputVec9, duration) << ", Duration: " << duration << std::endl;
     //std::cout << "Median: " << halfSelectionSort(inputVec9, duration) << ", Duration: " << duration << std::endl;
 
