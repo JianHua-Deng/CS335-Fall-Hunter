@@ -1,4 +1,4 @@
-#include "NearestNeighbor.hpp"
+//#include "NearestNeighbor.hpp"
 #include "GreedyTSP.hpp"
 void print(std::vector<Node> list){
     for(std::vector<Node>::iterator it = list.begin(); it != list.end(); ++it){
@@ -8,7 +8,9 @@ void print(std::vector<Node> list){
 int main(){
 
     
-    nearestNeighbor("dj38.tsp");
+    //nearestNeighbor("dj38.tsp");
+    //nearestNeighbor("qa194.tsp");
+    greedyTSP("dj38.tsp");
 
 
 
