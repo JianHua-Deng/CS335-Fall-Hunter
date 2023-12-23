@@ -16,12 +16,13 @@ std::vector<int>& worstCaseQuickSelect(){
   
 
     for(int i = 0; i < halfsize; ++i){
+    //the latter half of the vector will be all even numbers, alternating from values that i(even index) + 1 or halfsize + i, this is such so it is always odd and that it always pick the second largest
         if(i % 2 == 0){
             *(center + i) = i + 1;
         }else{
             *(center + i) = halfsize + i;
         }
-        *(start + i) = (i + 1) * 2;
+        *(start + i) = (i + 1) * 2;//the latter half will be all odds
     }
 
     return worse;

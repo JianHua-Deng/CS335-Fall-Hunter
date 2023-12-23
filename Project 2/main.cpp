@@ -40,7 +40,7 @@ void check(std::vector<int>& vec1, std::vector<int> vec2){
 
 void print(std::vector<int>& nums){
     for(int i = 0; i < nums.size(); i++){
-        std::cout << nums[i] << ", ";
+        std::cout << nums[i] << " ";
     }
     std::cout << std::endl;
 }
@@ -94,8 +94,7 @@ int main(){
     //std::cout << "Median: "<< halfHeapSort(inputVec2, duration) << ", Duration: " << duration << std::endl;
     //std::cout << "Median: "<< quickSelect(worse, duration) << ", Duration: " << duration << std::endl;
     
-
-    //std::cout << "Median: " << halfHeapSort(inputVec9, duration) << ", Duration: " << duration << std::endl;// IT SEEMS TO WORK YAYYYY
+    //std::cout << "Median: " << halfHeapSort(inputVec1, duration) << ", Duration: " << duration << std::endl;// IT SEEMS TO WORK YAYYYY
     //std::cout << "Median: " << quickSelect(inputVec9, duration) << ", Duration: " << duration << std::endl;
     //std::cout << "Median: " << medianOfMediansMethod(inputVec9, duration) << ", Duration: " << duration << std::endl;
     //std::cout << "Median: " << halfSelectionSort(inputVec9, duration) << ", Duration: " << duration << std::endl;

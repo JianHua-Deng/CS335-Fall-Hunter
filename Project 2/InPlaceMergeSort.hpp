@@ -5,11 +5,12 @@
 #include <chrono>
 
 void inPlaceMergeSort(std::vector<int>::iterator left, std::vector<int>::iterator right){
-    if(right - left <= 1){
+    if(right - left <= 1){//base case
         return;
     }
         std::vector<int>::iterator mid = left + (right - left)/2;
 
+        //pretty much the same idea as standard mergesort, except this time we are directly putting iterator into the parameter
         inPlaceMergeSort(left, mid);
         inPlaceMergeSort(mid, right);
         std::inplace_merge(left, mid, right);
@@ -25,14 +26,5 @@ int inPlaceMergeSort(std::vector<int>& nums, int& duration){
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
     
     return *(nums.begin() + (nums.size() - 1)/2);
-    
-    /*
-    if(nums.size() % 2 == 0){
-        return *(nums.begin() + (nums.size()/2) - 1);
-    }else{
-        return *(nums.begin() + (nums.size()/2));
-    }
-    */
-    
 
 }

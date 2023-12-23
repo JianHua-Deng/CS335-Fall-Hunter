@@ -13,6 +13,7 @@ std::vector<int>::iterator medianof4(std::vector<int>::iterator low, std::vector
     std::vector<int>::iterator lesser2;
     std::vector<int>::iterator lesser3;
 
+    //pretty much the same idea as median of 5 except we do lesser comparisons
     if(*low < *(low+1)){
         lesser1 = low;
         loser1 = low+1;
@@ -56,18 +57,15 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 
     std::advance(center, std::distance(low, high) / 2);//moving iterator center to point to the middle value of the list
 
-    //std::cout << "LOW: " << *low << ", CENTER: " << *center << ", HIGH: " << *high << ", ";
  
 
     if((*low < *center && *center < *high) || (*high < *center && *center < *low )){
 
         return center;
-        //std::iter_swap(center, high);//center should be the pivot
 
     }else if((*center < *low  && *low < *high) || (*high < *low && *low < *center)){
 
         return low;
-        //std::iter_swap(low, high);//low should be the pivot
 
     }else{
 
@@ -80,6 +78,7 @@ std::vector<int>::iterator medianof3 (std::vector<int>& nums, std::vector<int>::
 }
 
 std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high){
+
     //I know these may be extras and will cause slow downs, but I wanted to visualize so its easier to read this way
     std::vector<int>::iterator greater1;
     std::vector<int>::iterator greater2;
@@ -98,7 +97,7 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
     std::vector<int>::iterator d = low + 3;
     std::vector<int>::iterator e = low + 4;
 
-    if(*a > *b){//1st comparison
+    if(*a > *b){//1st comparison, comparing first group
         greater1 = a;
         loser1 = b;
     }else{
@@ -106,7 +105,7 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         loser1 = a;
     }
 
-    if(*c > *d){//2nd comparisons
+    if(*c > *d){//2nd comparisons, comparing second group
         greater2 = c;
         loser2 = d;
     }else{
@@ -136,14 +135,12 @@ std::vector<int>::iterator medianOfFive(std::vector<int>::iterator low, std::vec
         loser4 = loserofGreatest;
     }
 
-    //std::cout << "Winner: " << *winner2 << "| Loser3: " << *loser3 << "\n"; 
     if(*winner1 > *loser3){//5th comparisons, comparing the loser of the 3rd comparison to the winner of 4th comparison
         loser5 = loser3;
     }else{
         loser5 = winner1;
     }
     
-    //std::cout << "Winner: " << *winner3 << "| LoserofLoser: " << *loserofloser << "\n"; 
     if(*loser5 > *loserofloser){//6th comparisons, loser of 5th comparison will now compare to the loser of loser(which are the smaller value who compared to the loser of the 3rd comparison)
         return loser5;
     }else{
@@ -165,7 +162,6 @@ int medianOfMedians ( std::vector<int>& nums, std::vector<int>::iterator low, st
         medians.push_back(*medianOfFive(it, it + 4));//it + 4 will be the end of the current groups of 5
     }
 
-    //std::cout << "Distance" << std::distance(it, high) << "\n";
     if(std::distance(it, high + 1) == 3){//when there's 3 element left
         medians.push_back(*medianof3(nums, it, high));
     }else if(std::distance(it, high + 1) == 4){//when there's 4 element left
@@ -193,10 +189,9 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
     std::vector<int>::iterator pivot = find(nums, pivotValue, low, high);// return the pivot iterator, which is at high - 1
     std::iter_swap(pivot, high);
     pivot = high;//iter_swap only swaps the value, hence, the iterator pivot itself is no longer pointing at where the pivot is
-    //std::cout << "Pivot: " << *pivot << "\n";
+
     std::vector<int>::iterator left = low;
     std::vector<int>::iterator right = pivot - 1; //high is the position of pivot, and high - 1 will be the right start of our partitioning
-    //std::cout << "\n" <<"Pivot: " << *pivot << "\n";
 
     ///*
     while(true){
@@ -206,7 +201,7 @@ std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<i
         while(right > low && *right > *pivot){
             --right;
         }
-        //std::cout << "Pivot: " << *pivot << " Left: " << *left << " Right: " << *right << "\n";
+
         if(left >= right){
             break;
         }
